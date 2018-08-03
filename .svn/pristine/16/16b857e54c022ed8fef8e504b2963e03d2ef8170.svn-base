@@ -1,0 +1,207 @@
+/**special.wxss**/
+page{
+  background-color: #f2f2f2;
+}
+swiper{
+  width: 100%;
+}
+.slide-image{
+  width: 100%;
+}
+.tool-container{
+  width: 100%;
+  padding: 30rpx 0rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+  box-shadow: 0rpx 5rpx 5rpx rgba(0, 0, 0, 0.05);
+}
+.tool-item{
+  width: 25%;
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  color: #666;
+}
+.tool-item image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.sjjbxzt-container{
+  width: 100%;
+  padding: 0rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+  box-shadow: 0rpx 5rpx 5rpx rgba(0, 0, 0, 0.05);
+}
+.sjjbxzt-title{
+  position: relative;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: left;
+  box-sizing: border-box;
+  padding:0rpx 30rpx;
+  font-size: 36rpx;
+}
+.active-color{
+  color: #F34141;
+}
+.item-container{
+  width: 100%;
+  box-sizing: border-box;
+  padding:0rpx 10rpx 20rpx 10rpx;
+}
+.iitem{
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+  padding: 10rpx;
+  font-size: 26rpx;
+}
+.iitem image{
+  width: 100%;
+  height: 230rpx;
+}
+.subcolor{
+  color: #999;
+}
+.font30{
+  font-size: 30rpx;
+}
+.mb20{
+  margin-bottom: 20rpx;
+}
+.tabcontent-container{
+  width: 100%;
+}
+.tabcontent-container .content-item{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx 20rpx 20rpx 340rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+  box-shadow: 0rpx 5rpx 5rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+  height: 260rpx;
+  overflow: hidden;
+  font-size: 36rpx;
+}
+.content-item image{
+  position: absolute;
+  left: 20rpx;
+  top: 20rpx;
+  width: 300rpx;
+  height: 220rpx;
+}
+.content-item .item-title{
+  height: 80rpx;
+  overflow: hidden;
+  line-height: 40rpx;
+  margin-bottom: 10rpx;
+  box-sizing: border-box;
+  margin-top: 5rpx;
+}
+.content-item .item-zjr{
+  height: 70rpx;
+  margin-bottom: 10rpx;
+  line-height: 36rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.content-item .item-time{
+  position: absolute;
+  left: 20rpx;
+  top: 20rpx;
+  color: #fff;
+  font-size: 30rpx;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 9;
+  padding: 5rpx 10rpx;
+}
+.content-item .item-time i{
+  margin-right: 10rpx;
+}
+.tab-container{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0rpx 130rpx 0rpx 20rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+  box-shadow: 0rpx 5rpx 5rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+  font-size: 36rpx;
+}
+.tab-item{
+  display: inline-block;
+  height: 90rpx;
+  box-sizing: border-box;
+  margin-right: 30rpx;
+  padding: 20rpx 0rpx;
+}
+.tab-item.active{
+  color: #F34141;
+  border-bottom: 2px solid #F34141;
+}
+.tab-container scroll-view{
+  height: 90rpx;
+  width: 100%;
+}
+.more-tab{
+  position: absolute;
+  right: 20rpx;
+  top: 0rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.tablist{
+  white-space: nowrap;
+}
+.tabcontent-container .hover-class{
+  background-color: #f2f2f2;
+}
+
+.topserach-container{
+  width: 100%;
+  height: 100rpx;
+  background-color: #F34141;
+  box-sizing: border-box;
+  padding: 17rpx 20rpx 17rpx 100rpx;
+  position: relative;
+}
+.topserach-container .input{
+  width: 100%;
+  height: 66rpx;
+  box-sizing: border-box;
+  border-radius: 33rpx;
+  background-color: #fff;
+  line-height: 66rpx;
+  color: #ccc;
+  padding: 0rpx 30rpx;
+  font-size: 30rpx;
+}
+.topserach-container .input i{
+  color: #F34141;
+  opacity: 0.3;
+}
+.left-btn{
+  position: absolute;
+  left: 20rpx;
+  top: 10rpx;
+  text-align: center;
+  color: #FEB0B0;
+  font-size: 28rpx;
+}
+.left-btn i{
+  font-size: 36rpx;
+}
+.iitem-block{
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10rpx;
+}
+.iitem-block image{
+  width: 100%;
+  height: 430rpx;
+}

@@ -1,0 +1,30 @@
+<view class="container">
+  <view class="header">
+    <view class="header-search">
+      <input type="text" placeholder="输入关键字快速查找课程" placeholder-class='placeholder' class='input' />
+      <view class='search-img'>
+        <i class='iconfont icon-sousuo'></i>
+      </view>
+    </view>
+  </view>
+  <!--内容  -->
+  <scroll-view scroll-y='true' class='box-contant'>
+    <view class='box-contant-list' wx:for='{{results}}' wx:key>
+      <view class='img'>
+        <image src='{{item.article_img}}'></image>
+      </view>
+      <view class='jianjie'>
+        <view class='title'>{{item.article_title}}</view>
+        <view class='jieshao'>{{item.jieshao}}</view>
+        <view class='xinxi'>
+          <view class='time'>{{item.article_times}}</view>
+          <view class='bofang'>
+            <i class='iconfont icon-bofang1'>
+              <text>播放</text>
+            </i>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

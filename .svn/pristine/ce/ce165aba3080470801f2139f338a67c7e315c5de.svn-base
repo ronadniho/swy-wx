@@ -1,0 +1,666 @@
+var __GlobalInfo = require('../../utils/config.js');
+var util = require('../../utils/util.js');
+
+//获取应用实例
+const app = getApp()
+Page({
+  data: {
+    GlobalInfo: __GlobalInfo,
+    currentTab: 0,
+    selTabIndex: 4,
+    sear: true,
+    close: false,
+    scroll: true,
+    yinping:false,
+    shipin:false,
+    shipinyinping:false,
+    inputValue: '',
+    first: '',
+    two: '',
+    userInfo: {},
+    wxUserInfo: {},
+    turn: false,
+    frtcate: [],
+    seccate: [],
+    PlanInClassList: [],
+    coursewarelist_1: [],
+    coursewarelist_2: [],
+    coursewarelist_4:[],
+    bixiu: [],
+    xuanxiu: [],
+    datas: [],
+    getSearch: [],
+    searchs: false,
+    // 课程——专题分页加载
+    pageindex: 0,
+    index: 0,
+    pagesize: 10,
+    lastPageSize1: 10,
+    // 课程分页加载
+    Index: 0,
+    list: [],
+    pageIndex: 1,
+    pageSize: 10,
+    lastPageSize2: 10,
+    searchnull: false,
+    searchkecheng: false,
+    loadMore: false,
+    change: true,
+    // 搜索专题
+    names: '',
+    codes: ''
+  },
+  //  推荐——司局级必修专题
+  getPageData1: function () {
+    var that = this;
+    util.getServerData({
+      "key": ["GetPlanInClassList"],
+      "postData": {
+        "userid": wx.getStorageSync('loginUser').studentId,
+        "pageindex": 0,
+        "pagesize": 4
+      } 
+    }, "api/CommonSQL", function (result) {
+      console.log(result)
+      if (result) {
+        for (var i = 0; i < result.length; i++) {
+          result[i].playpercentage = util.returnFloat(parseFloat(result[i].playpercentage) * 100);
+        }
+      }
+      wx.hideNavigationBarLoading(); //完成停止加载
+      wx.stopPullDownRefresh(); //停止下拉刷新
+      that.setData({
+        PlanInClassList: result,
+      })
+    }, "POST")
+  },
+  // 必修专题——更多
+  morezt: function (e) {
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    wx.navigateTo({
+      url: `/pages/electiveCourse/CompulsorySubject?ifmustclass=1`,
+    })
+  },
+  // 选修专题——更多
+  morexuanxiu: function (e) {
+    var that = this;
+    wx.navigateTo({
+      url: `/pages/electiveCourse/CompulsorySubject_xuanxiu?ifmustclass=0`,
+    })
+  },
+  // 首页课程更多
+  moreshouye: function () {
+    var that = this;
+    if (that.data.selTabIndex == 4) {
+      wx.navigateTo({
+        url: `/pages/electiveCourse/tuijian?searchType=4`,
+      })
+    } else if (that.data.selTabIndex == 1) {
+      wx.navigateTo({
+        url: `/pages/electiveCourse/zuixin?searchType=1`,
+      })
+    } else if (that.data.selTabIndex == 2) {
+      wx.navigateTo({
+        url: `/pages/electiveCourse/zuire?searchType=2`,
+      })
+    }
+  },
+  // 最新课程——更多
+  morekc: function () {
+    var that = this;
+    wx.navigateTo({
+      url: `/pages/electiveCourse/zuixin?searchType=1`,
+    })
+  },
+  // 推荐课程——更多
+  moretuijian: function () {
+    var that = this;
+    wx.navigateTo({
+      url: `/pages/electiveCourse/tuijian?searchType=4`,
+    })
+  },
+  // 最热课程——更多
+  morezuire: function () {
+    var that = this;
+    wx.navigateTo({
+      url: `/pages/electiveCourse/zuire?searchType=2`,
+    })
+  },
+  // 搜索过滤课程
+  bindInput: function (e) {
+    var that = this;
+    that.setData({
+      inputValue: e.detail.value
+    })
+    if (that.data.inputValue == '') {
+      that.setData({
+        sear: true,
+        close: false,
+      })
+      that.kecheng();
+      that.getPageData2();
+    } else {
+      that.setData({
+        first: '',
+        two: ''
+      })
+    }
+  },
+  close: function () {
+    this.setData({
+      sear: true,
+      close: false,
+      inputValue: ''
+    })
+    this.kecheng();
+  },
+  closes: function () {
+    this.setData({
+      inputValue: ''
+    })
+    this.kecheng();
+  },
+  searchfilt: function () {
+    var that = this;
+    that.setData({
+      pageIndex: 1,
+      pageSize: 10,
+      pagesize: 10,
+      pageindex: 0,
+      sear:false,
+      close: true,
+    })
+    wx.navigateTo({
+      url: `/pages/electiveCourse/zuixin?searchType=1&condation=${that.data.inputValue}`,
+    })
+    that.kecheng(that.data.inputValue);
+    that.getPageData2(that.data.inputValue);
+  },
+
+  // 专题——必修
+  getPageData2: function () {
+    var that = this;
+    util.getServerData({
+      "key": ["getMustOrChoiceClassDataListForWCate", "getMustOrChoiceClassTotalcountForWCate"],
+      "postData": {
+        userid: wx.getStorageSync('loginUser').studentId,
+        keywords1: that.data.inputValue,
+        keywords2: that.data.inputValue,
+        pageindex: that.data.pageindex,
+        pagesize: that.data.pagesize,
+        ifmustclass: 1,
+      }
+    }, "api/CommonSQL", function (result) {
+      console.log(result[0].data)
+      if (result[0].data) {
+        for (var i = 0; i < result[0].data.length; i++) {
+          result[0].data[i].progress = util.returnFloat(parseFloat(result[0].data[i].progress) * 100);
+        }
+      }
+      // 请求数据为空
+      // if (!result.length == 0) {
+      //   that.setData({
+      //     searchnull: false
+      //   })
+      // } else {
+      //   that.setData({
+      //     searchnull: true,
+      //   })
+      // }
+
+    
+      that.setData({
+        bixiu: result[0].data
+      })
+      console.log(that.data.pageindex)
+    }, "POST")
+  },
+  // 选修
+  getPageData3: function () {
+    var that = this;
+    util.getServerData({
+      "key": ["getMustOrChoiceClassDataListForWCate", "getMustOrChoiceClassTotalcountForWCate"],
+      "postData": {
+        userid: wx.getStorageSync('loginUser').studentId,
+        keywords1: that.data.inputValue,
+        keywords2: that.data.inputValue,
+        pageindex: that.data.pageindex,
+        pagesize: that.data.pagesize,
+        ifmustclass: 0,
+      }
+    }, "api/CommonSQL", function (result) {
+      console.log(result[0].data)
+      if (result[0].data) {
+        for (var i = 0; i < result[0].data.length; i++) {
+          result[0].data[i].progress = util.returnFloat(parseFloat(result[0].data[i].progress) * 100);
+        }
+      }
+      // 请求数据为空
+      // if (!result.length == 0) {
+      //   that.setData({
+      //     searchnull: false
+      //   })
+      // } else {
+      //   that.setData({
+      //     searchnull: true,
+      //   })
+      // }
+      that.setData({
+        xuanxiu: result[0].data
+      })
+    }, "POST")
+  },
+  // 加载更多
+  // loadMore1: function (e) {
+  //   var that = this;
+  //   if (that.data.lastPageSize1 >= that.data.pagesize) {
+  //     var index = that.data.index;
+  //     index++;
+  //     that.setData({
+  //       index: index,
+  //       pageindex: index * that.data.pagesize,
+  //     });
+  //     that.getPageData2()
+
+  //   } else {
+  //     return;
+  //   }
+  // },
+
+
+  // 分类页面
+  classification: function () {
+    var that = this;
+    that.setData({
+      turn: !that.data.turn,
+      scroll: !that.data.scroll,
+      inputValue: ''
+    })
+  },
+  // tab切换
+  tabNav: function (e) {
+    var that = this;
+    if (that.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
+    if (that.data.currentTab == 1) {
+      wx.showLoading({
+        title: '加载中...',
+        mask: true,
+        success: function () {
+          that.getPageData2()
+        }
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 2000)
+    }
+    if (that.data.currentTab == 2) {
+      // wx.showLoading({
+      //   title: '加载中...',
+      //   mask: true,
+      //   success: function () {
+      //     // that.kecheng()
+      //   }
+      // })
+      // setTimeout(function () {
+      //   wx.hideLoading()
+      // }, 2000)
+    }
+  },
+  // tab课程切换
+  onChangeTab: function (event) {
+    this.setData({ selTabIndex: event.currentTarget.dataset.tabindex });
+  },
+  getCoursewarelist4: function () {
+    var that = this;
+    // 课程——推荐
+    util.getServerData({
+      "condation": "",
+      "onecate": "",
+      "twocate": "",
+      "courseType": "",
+      "searchType": 4,
+      "pageIndex": 1,
+      "pageSize": 3,
+      "allCount": 0,
+      "maxSize": 10,
+      "studentid": wx.getStorageSync('loginUser').studentId
+    }, "api/getcoursewarelistforwcate", function (result) {
+      console.log(result)
+      for (var i in result.list) {
+        result.list[i].duration = util.secondToDate(parseInt(result.list[i].duration) * 60);
+      }
+      that.setData({ coursewarelist_4: result.list });
+    });
+  },
+  getCoursewarelist1: function () {
+    var that = this;
+    // 课程——最新
+    util.getServerData({
+      "condation": "",
+      "onecate": "",
+      "twocate": "",
+      "courseType": "",
+      "searchType": 1,
+      "pageIndex": 1,
+      "pageSize": 3,
+      "allCount": 0,
+      "maxSize": 10,
+      "studentid": wx.getStorageSync('loginUser').studentId
+    }, "api/getcoursewarelistforwcate", function (result) {
+      console.log(result.list)
+      var result = result.list;
+      for (var i in result) {
+        result[i].duration = util.secondToDate(parseInt(result[i].duration) * 60);
+      }
+      wx.hideNavigationBarLoading(); //完成停止加载
+      wx.stopPullDownRefresh(); //停止下拉刷新
+      that.setData({ coursewarelist_1: result });
+    });
+  },
+  getCoursewarelist2: function () {
+    var that = this;
+    // 课程——最热
+    util.getServerData({
+      "condation": "",
+      "onecate": "",
+      "twocate": "",
+      "courseType": "",
+      "searchType": 2,
+      "pageIndex": 1,
+      "pageSize": 3,
+      "allCount": 0,
+      "maxSize": 10,
+      "studentid": wx.getStorageSync('loginUser').studentId
+    }, "api/getcoursewarelistforwcate", function (result) {
+      console.log(result.list)
+      var result = result.list;
+      for (var i in result) {
+        result[i].duration = util.secondToDate(parseInt(result[i].duration) * 60);
+      }
+      that.setData({ coursewarelist_2: result });
+    });
+  },
+
+  // 司局级跳转详情
+  // detailsj: function (event) {
+  //   var that = this;
+  //   wx.navigateTo({
+  //     url: `/pages/specialDesc/specialDesc?classid=${event.currentTarget.dataset.itemid}&currentTab=0`,
+  //   })
+  // },
+  detailsjzt: function (e) {
+    console.log(e)
+    var that = this;
+    var item = e.currentTarget.dataset.item;
+
+    console.log(item)
+    var url = item.phonerichmediaurl;
+    var classid = item.id;
+    if (item.ifopenrichmedia == 1 || !url == '') {
+      // 查询是否已报名 
+      util.getServerData({
+        "key": ["GetIsSignUp"],
+        "postData": {
+          "classid": classid,
+          "studentid": wx.getStorageSync('loginUser').studentId
+        }
+      }, "api/CommonSQL", function (result) {
+        console.log(result)
+        // 已报名
+        if (result.length > 0) {
+          url = url.replace("{{classid}}", classid)
+          wx.navigateTo({
+            url: `/pages/specialDesc/specialDesc?phonerichmediaurl=${url}&currentTab=0&classid=${item.id}`,
+          })
+        }else{
+          // 去报名
+          util.getServerData({
+            "classid": classid
+          },"api/SignUp",function (result){
+              console.log(result)
+              // 报名成功
+              if(result.result==true){
+                wx.navigateTo({
+                  url: `/pages/specialDesc/specialDesc?phonerichmediaurl=${url}&currentTab=0&classid=${item.id}`,
+                })
+              }
+          },"post")
+        }
+      })
+    } else {
+      wx.navigateTo({
+        url: `/pages/specialDesc/specialDesc?classid=${item.id}&currentTab=0`,
+      })
+    }
+  },
+  // 选修专题跳转详情
+  detailxuanxiu: function (e) {
+    var that = this;
+    var item = e.currentTarget.dataset.item;
+    wx.navigateTo({
+      url: `/pages/specialDesc/specialDesc?classid=${item.id}&currentTab=0`,
+    })
+  },
+  // 课程——推荐——推荐课程跳转详情
+  detailtj: function (e) {
+    var that = this;
+    var item = e.currentTarget.dataset.item;
+    wx.navigateTo({
+      url: `/pages/lesdetail/detail?id=${item.coursewareid}`,
+    })
+  },
+  // 课程——推荐——最新课程跳转详情
+  detailkcnew: function (e) {
+    var that = this;
+    var item = e.currentTarget.dataset.item;
+    wx.navigateTo({
+      url: `/pages/lesdetail/detail?id=${item.coursewareid}`,
+    })
+  },
+  // 课程——推荐——最热课程跳转详情
+  detailkchot: function (e) {
+    var that = this;
+    var item = e.currentTarget.dataset.item;
+    console.log(that.data.coursewarelist_2)
+    wx.navigateTo({
+      url: `/pages/lesdetail/detail?id=${item.coursewareid}`,
+    })
+  },
+  // 课程——课程跳转详情
+  detailkc: function (e) {
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    console.log(that.data.list)
+    wx.navigateTo({
+      url: `/pages/lesdetail/detail?id=${that.data.list[index].coursewareid}`,
+    })
+  },
+  // 老师跳转详情
+  detailteach: function (e) {
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    wx.navigateTo({
+      url: `/pages/lesdetail/teacher?id=${that.data.teachphotoList[index].id}`,
+    })
+  },
+
+  onLoad: function () {
+    var that = this;
+    var callback = result => {
+      for (let i = 0; i < result.length; i++) {
+        result[i]["choice"] = 0;
+      }
+      result.splice(0, 0, { "id": "", "name": "全部", "coursecount": 0, "choice": 1 });
+      that.setData({
+        frtcate: result
+      })
+    }
+    util.getServerData({
+      "key": ["mystudy-allcourse-category"],
+      "postData": { "fid": "0" }
+    }, "api/CommonSQL", function (result) {
+      callback(result);
+    });
+
+    wx.getSystemInfo({
+      success: function (res) {
+        var Heights = res.windowHeight;
+        that.setData({
+          clientHeight: Heights, //设备的高度等于scroll-view内容的高度
+        });
+      }
+    }),
+    that.getPageData1();
+    that.getCoursewarelist4();
+    that.getCoursewarelist1();
+    that.getCoursewarelist2();
+    that.getPageData3();
+    that.getPageData2();
+    that.getPageData1();
+  },
+  onReady: function () {
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+  },
+  onShow: function () {
+    this.getPageData1();
+    this.getCoursewarelist1();
+  },
+  choiceFir: function (e) {
+    let item = e.currentTarget.dataset.item;
+    let frtcate = this.data.frtcate;
+    for (let i = 0; i < frtcate.length; i++) {
+      frtcate[i]["choice"] = 0;
+      if (frtcate[i].id == item.id) {
+        frtcate[i]["choice"] = 1;
+      }
+    }
+    var callback = res => {
+      for (let i = 0; i < res.length; i++) {
+        res[i]["choice"] = 0;
+      }
+      res.splice(0, 0, { "id": "", "name": "全部", "coursecount": 0, "choice": 1 });
+      this.setData({
+        seccate: res,
+        frtcate: frtcate,
+        first: item.id
+      })
+      console.log(this.data.first)
+    }
+    util.getServerData({
+      "key": ["mystudy-allcourse-category"],
+      "postData": { "fid": item.id }
+    }, "api/CommonSQL", function (result) {
+      callback(result);
+    });
+  },
+  choiceSer: function (e) {
+    let item = e.currentTarget.dataset.item;
+    let seccate = this.data.seccate;
+    for (let i = 0; i < seccate.length; i++) {
+      seccate[i]["choice"] = 0;
+      if (seccate[i].id == item.id) {
+        seccate[i]["choice"] = 1;
+      }
+    }
+    
+    this.setData({
+      seccate: seccate,
+      turn: false,
+      currentTab: 2,
+      two: item.id
+    })
+    wx.navigateTo({
+      url: `/pages/electiveCourse/zuixin?twocate=${this.data.two}&onecate=${this.data.first}&searchType=1`,
+    })
+    // this.kecheng(this.data.two)
+  },
+  // 课程
+  kecheng: function () {
+    var that = this;
+    var obj = {
+      "condation": that.data.inputValue,
+      "onecate": that.data.first,
+      "twocate": that.data.two,
+      "courseType": "",
+      "searchType": that.data.selTabIndex,
+      "pageIndex": that.data.pageIndex,
+      "pageSize": that.data.pageSize,
+      "allCount": 0,
+      "maxSize": 10,
+      "studentid": wx.getStorageSync('loginUser').studentId
+    };
+    util.getServerData(obj, "api/getcoursewarelistforwcate", function (result) {
+      console.log(result)
+      var result = result.list;
+      // 请求数据为空
+      // if (!result.length == 0) {
+      //   that.setData({
+      //     searchkecheng: false,
+      //   })
+      // } else {
+      //   that.setData({
+      //     searchkecheng: true,
+      //      currentTab: 2
+      //   })
+      // }
+      for (var i = 0; i < result.length; i++) {
+        // 格式化时间
+        var time1 = parseInt(result[i].duration) * 60;
+        result[i].duration = util.secondToDate(time1);
+      }
+
+      // 分页加载触发
+      // 初始化
+      if (that.data.pageIndex == 1) {
+        that.setData({
+          list: []
+        })
+      }
+      // 当前页
+      that.setData({
+        lastPageSize2: result ? result.length : 0
+      });
+      var lists = that.data.list;
+      if (result) {
+        for (var i = 0; i < result.length; i++) {
+          lists.push(result[i])
+        }
+      }
+      that.setData({
+        list: lists
+      });
+
+    }, 'POST');
+
+  },
+  loadMore2: function (e) {
+    var that = this;
+    if (that.data.lastPageSize2 >= that.data.pageSize) {
+      that.setData({
+        pageIndex: that.data.pageIndex + 1,
+      });
+      that.kecheng()
+    }
+  },
+  //跳转到其他页面
+  onGoOtherPage: function (event) {
+    wx.navigateTo({
+      url: '/pages/' + event.currentTarget.dataset.pagepath
+    })
+  },
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.getCoursewarelist1();
+  },
+  // refesh:function(){
+  //   this.getPageData1();
+  //   this.getCoursewarelist1();
+  // }
+})

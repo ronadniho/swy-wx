@@ -1,0 +1,127 @@
+.scroll_box {
+  width: 100%;
+  height: 307rpx;
+  overflow: hidden;
+  background: #fff;
+  white-space: nowrap;
+  padding: 20rpx;
+}
+
+
+
+.item_list {
+  width: 160rpx;
+  height: auto;
+  margin-right: 23rpx;
+  display: inline-block;
+}
+
+.box-init {
+  box-sizing: border-box;
+  margin: 0rpx;
+  padding: 0rpx;
+  outline: 0rpx;
+  border: none;
+}
+
+
+.les-Anthology {
+  width: 100%;
+  height: 100rpx;
+  border-top: 1rpx solid #eae9e9;
+  margin-bottom: 10rpx;
+  background-color: #fff;
+  position: fixed;
+  top: 490rpx;
+  padding-left: 100rpx;
+}
+
+.les-Anthology .title-box {
+  width: 100rpx;
+  height: 100%;
+  position: absolute;
+  left: 0rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.les-Anthology .title {
+  font-size: 33rpx;
+  font-weight: 700;
+  color: #626262;
+}
+
+.les-Anthology-scroll_box {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+  white-space: nowrap;
+}
+
+.scroll-view_x{
+  width: 100%;
+  height: 100%;
+  padding: 0rpx 10rpx;
+  padding-top: 19rpx;
+  background-color: rebeccapurple;
+}
+
+.les-Anthology-item {
+  height: 50rpx;
+  width: 120rpx;
+  display: inline-block;
+  border: 1rpx solid #c9c9c9;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  margin-left: 20rpx;
+  text-align: center;
+}
+
+.les-Anthology-item.active {
+  background-color: #38abfe;
+  border: 1rpx solid #38abfe;
+  color: #fff;
+}
+
+
+::-webkit-scrollbar {
+  width: 10;
+  height: 10;
+  color: #38abfe;
+}
+
+.ki1{
+  background-color: red;
+  height: 200rpx;
+  width: 700rpx;
+}
+
+.ki2{
+  background-color: gold;
+  height: 200rpx;
+  width: 400rpx;display: inline-block;
+}
+
+.ki3{
+  background-color:  #38abfe;
+  height: 200rpx;
+  width: 200rpx;display: inline-block;
+}
+
+.ki1{
+width: 100%;
+height: 307rpx;
+overflow: hidden;
+padding: 20rpx;
+background: #fff;
+white-space: nowrap;
+}
+.ki2{
+width: 160rpx;
+height: auto;
+margin-right: 23rpx;
+display: inline-block;
+}

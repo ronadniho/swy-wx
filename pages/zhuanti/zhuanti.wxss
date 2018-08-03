@@ -1,0 +1,135 @@
+/**special.wxss**/
+
+.cintainer {
+  width: 100%;
+}
+.container .header {
+  background: #f34141;
+  width: 100%;
+  padding: 18rpx 0;
+  line-height: 50%;
+}
+
+.container .header .header-search {
+  display: flex;
+  padding: 7rpx;
+  margin-top: 4rpx;
+  border-radius: 50rpx;
+  background: #fff;
+  width: 547rpx;
+  height: 50rpx;
+  margin: 0 auto;
+}
+.placeholder{
+  font-size: 30rpx;
+}
+.container .header .header-search .input {
+  flex: 5;
+  background: #fff;
+  margin-top: -2rpx;
+  margin-right: 5rpx;
+  margin-left: 20rpx;
+}
+
+.container .header .header-search .search-img {
+  flex: 1;
+  text-align: center;
+  padding-top: 17rpx;
+  color: #ffb0b3;
+}
+
+.container .header .text {
+  margin: 6rpx 0;
+}
+
+.container .header text {
+  font-size: 29rpx;
+  color: #ffb0b1;
+}
+/*内容栏  */
+
+.container .box {
+ width: 100%;
+  background: #f2f2f2;
+}
+
+.container .box .box-nav {
+  display: flex;
+  height: 90rpx;
+}
+
+.container .box .box-nav .box-nav-list {
+  flex: 1;
+  background: #fff;
+  
+  box-shadow: 1px 1px 1px #A8A8A8;
+   text-align: center;
+}
+.container .box .box-nav .box-nav-list .zuixin{
+  margin: 0 72rpx;
+  padding: 19rpx 0;
+}
+
+.container .box .box-nav .box-nav-list text {
+  margin: 20rpx 0;
+  font-size: 35rpx;
+}
+
+.active {
+  color: red;
+  border-bottom: 2px solid red;
+}
+
+.container .box .box-contant {
+  display: flex;
+  flex-direction: column;
+}
+
+.container .box .box-contant .box-contant-list {
+  flex: 1;
+  display: flex;
+  box-shadow: 1px 1px 1px #A8A8A8;
+  background: #ffffff;
+  margin: 17rpx 0;
+  padding: 25rpx 20rpx 25rpx 25rpx;
+  /* height: 220rpx; */
+}
+.container .box .box-contant .box-contant-list .img{
+  flex: 1;
+ margin-right: 15rpx;
+ padding-top: 8rpx;
+}
+.container .box .box-contant .box-contant-list .img .time{
+  width: 145rpx;
+  height: 30rpx;
+  background: black;
+  opacity: 0.3;
+  text-align: left;
+  line-height: 19rpx;
+  position: absolute;
+  z-index: 999;
+}
+.container .box .box-contant .box-contant-list .img .time text{
+  color: #ffffff;
+  font-size: 25rpx;
+  margin: 0 10rpx;
+}
+.container .box .box-contant .box-contant-list .img image{
+  width: 278rpx;
+  height: 175rpx;
+}
+.container .box .box-contant .box-contant-list .jianjie{
+  flex: 2
+}
+.container .box .box-contant .box-contant-list .jianjie .title{
+  font-size: 30rpx;
+  color: #616161;
+}
+.container .box .box-contant .box-contant-list .jianjie .jieshao{
+  font-size: 24rpx;
+  color: #AFAFAF;
+  line-height: 34rpx;
+}
+.container .box .box-contant .box-contant-list .jianjie .jieshao span{
+  margin-left: 10rpx;
+}

@@ -1,0 +1,67 @@
+<view class="container">
+  <view class='top-container'>
+    <view class='usertop-container'>
+      <image class='image' mode='aspectFill' src='https://ipb.cnmaker.top/mApp/gerenzhongxinbeijin.png' />
+      <div class="userphoto-container">
+        <image mode='scaleToFill' src="{{wxUserInfo.avatarUrl?wxUserInfo.avatarUrl:'http://cnmaker.org.cn/imgClip/sysImg/male02-130.png'}}"></image>
+      </div>
+      <view class='username-welcome'>{{userInfo.name}}</view>
+      <view class='logout' bindtap='goLogin'>退出</view>
+    </view>
+    <view class='number-container'>
+      <view class='number-item color1'>
+        <view>{{numberTime.alltime}}</view>
+        <div>已获学时</div>
+      </view>
+      <view class='number-item color2'>
+        <view>0</view>
+        <div>毕业专题</div>
+      </view>
+      <view class='number-item color3'>
+        <view>{{numberTime.finishedcount}}</view>
+        <div>已学课程</div>
+      </view>
+    </view>
+  </view>
+
+  <view class='box-init process-box'>
+    <view class='box-init process-box-title'>
+      <text class='txt-1'>年度考核情况</text>
+      <text class='txt-2'>要求完成</text>
+      <text class='txt-3'>50</text>
+      <text class='txt-2'>学时</text>
+    </view>
+    <view class='box-init process-box-bar'>
+      <view class='box-init process-box-bar-out'>
+        <view class='box-init process-box-bar-in' style="width:{{numberTime.perc}}%;">{{numberTime.alltime}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='menu-container cl'>
+    <view bindtap='tip1' class='menu-item' hover-class='menu-item-hover'>
+      <image src='{{GlobalInfo.resourceUrl}}/wodezhuanti.png'></image>
+      <view>我的专题</view>
+      <view class='subcolor font24'>有
+        <span>0</span>个专题班毕业</view>
+    </view>
+    <view bindtap='goOtherPage' data-pagepath="mycenter/kecheng" class='menu-item' hover-class='menu-item-hover'>
+      <image src='{{GlobalInfo.resourceUrl}}/wodekecheng.png'></image>
+      <view>我的课程</view>
+      <view class='subcolor font24'>学习
+        <span>{{numberTime.mystudycoursecount}}</span>门课程</view>
+    </view>
+    <view bindtap='tip1' class='menu-item' hover-class='menu-item-hover'>
+      <image src='{{GlobalInfo.resourceUrl}}/wodeshoucang.png'></image>
+      <view>我的小结</view>
+      <view class='subcolor font24'>共有
+        <span>0</span>个收藏</view>
+    </view>
+    <view bindtap='tip1' class='menu-item' hover-class='menu-item-hover'>
+      <image src='{{GlobalInfo.resourceUrl}}/wodekaoshi.png'></image>
+      <view>我的考试</view>
+      <view class='subcolor font24'>有
+        <span>{{numberTime.myexamcount}}</span>门考试</view>
+    </view>
+  </view>
+</view>

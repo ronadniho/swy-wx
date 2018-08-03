@@ -1,0 +1,163 @@
+.container {
+  width: 100%;
+}
+
+.container .header {
+  background: #f34141;
+  width: 100%;
+  padding: 18rpx 0;
+  line-height: 50%;
+}
+
+.container .header .header-search {
+  display: flex;
+  padding: 7rpx;
+  margin-top: 4rpx;
+  border-radius: 50rpx;
+  background: #fff;
+  width: 547rpx;
+  height: 50rpx;
+  margin: 0 auto;
+}
+
+.placeholder {
+  font-size: 30rpx;
+}
+
+.container .header .header-search .input {
+  flex: 5;
+  background: #fff;
+  margin-top: -2rpx;
+  margin-right: 5rpx;
+  margin-left: 20rpx;
+}
+
+.container .header .header-search .search-img {
+  flex: 1;
+  text-align: center;
+  padding-top: 17rpx;
+  color: #ffb0b3;
+}
+
+.container .header .text {
+  margin: 6rpx 0;
+}
+
+.container .header text {
+  font-size: 29rpx;
+  color: #ffb0b1;
+}
+
+/*内容  */
+
+.container .box-contant {
+  display: flex;
+  flex-direction: column;
+  background: #f2f3f3;
+  padding: 0 15rpx;
+}
+
+.container .box-contant .box-contant-list {
+  flex: 1;
+  margin-top: 13rpx;
+  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+  background: #ffffff;
+  padding: 21rpx 30rpx 36rpx 30rpx;
+  height: 569rpx; 
+}
+
+.container .box-contant .box-contant-list .jianjie {
+  display: flex;
+  flex-direction: column;
+}
+
+.container .box-contant .box-contant-list .jianjie .title {
+  flex: 1;
+  font-size: 38rpx;
+  width: 100%;
+  color: #333;
+  font-weight: 600;
+  
+}
+.container .box-contant .box-contant-list .jianjie .title span{
+  width: 10rpx;
+  height: 10rpx;
+  background: #e5e5e5;
+}
+.container .box-contant .box-contant-list .jianjie .img{
+flex: 1;
+  width: 700rpx;
+  height: 283rpx;
+  margin: 16rpx 0;
+}
+.container .box-contant .box-contant-list .jianjie .jieshao {
+  flex: 2;
+  font-size: 31rpx;
+  color: #afafaf;
+  line-height: 49rpx;
+ height: 161rpx;
+ border-bottom: 1px solid #e5e5e5;
+}
+
+.container .box-contant .box-contant-list .jianjie .jieshao span {
+  margin-left: 10rpx;
+}
+
+.container .box-contant .box-contant-list .jianjie .xinxi {
+  flex: 1;
+  display: flex;
+  line-height: 75rpx;
+  text-align: center;
+}
+
+.container .box-contant .box-contant-list .jianjie .xinxi .time {
+  flex: 3;
+  color: #b9b9b9;
+  font-size: 26rpx;
+}
+.container .box-contant .box-contant-list .jianjie .xinxi .artic {
+  flex: 1;
+  color: #b9b9b9;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.container .box-contant .box-contant-list .jianjie .xinxi .bofang {
+  flex: 1;
+  width: 120rpx;
+  height: 52rpx;
+  background: #ffffff;
+  text-align: center;
+  line-height: 47rpx;
+  border: 1px solid #f96e4e;
+  border-radius: 38rpx;
+  margin-top: 10rpx;
+  color: #f96e4e;
+}
+
+.container .box-contant .box-contant-list .jianjie .xinxi .bofang text {
+  font-size: 32rpx;
+}
+.container .box-contant .time-nav{
+  height: 90rpx;
+  border-left: 8rpx solid #E5E5E5;
+  margin: 8rpx 80rpx;
+  width: 92rpx;
+  text-align: right;
+  line-height: 129rpx;
+}
+.container .box-contant .round{
+  position: absolute;
+  left: 67rpx;
+  top: 530rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border: 8rpx solid #FF6B87;
+  border-radius: 50%;
+  background: #ffffff;
+}
+.container .box-contant .time-nav .datatime{
+  color:  #b9b9b9;
+  font-size: 30rpx;
+}

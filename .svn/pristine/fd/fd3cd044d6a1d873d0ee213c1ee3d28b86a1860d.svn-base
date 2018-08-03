@@ -1,0 +1,23 @@
+<view class='les-faculty-box'>
+
+  <view class='les-faculty'>
+
+    <view class='les-faculty-header'>
+      <image src="{{GlobalInfo.fileUrl}}{{teacherinfo.photo_servername}}" mode='aspectFill'></image>
+    </view>
+
+    <view class='les-faculty-content'>
+      <view class='les-faculty-name'>{{teacherinfo.name}}</view>
+      <view class='les-faculty-position'>{{teacherinfo.description}}</view>
+    </view>
+  </view>
+
+  <view class='les-faculty-bref'>
+  <rich-text nodes="{{teacherinfo.comment}}"></rich-text>
+  </view>
+
+  <view wx:if="{{!teacherinfo.name&&!isloading}}" class='empty-container' style='width:100%;'>
+    <image mode='widthFix' src='/image/empty.png' style='width:30%;'></image>
+    <view>该教师还无任何简介信息</view>
+  </view>
+</view>

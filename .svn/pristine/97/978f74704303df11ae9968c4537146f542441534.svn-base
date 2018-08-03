@@ -1,0 +1,79 @@
+{
+  "pages": [
+    "pages/electiveCourse/electiveCourse",
+    "pages/course/course",
+    "pages/index/index",
+    "pages/login/login",
+    "pages/special/special",
+    "pages/mycenter/index",
+    "pages/mycenter/zhuanti",
+    "pages/mycenter/kecheng",
+    "pages/mycenter/shoucang",
+    "pages/mycenter/yixuelist",
+    "pages/Curriculum/Curriculum",
+    "pages/endTest/endTest",
+    "pages/lesdetail/teacherlist",
+    "pages/lesdetail/teacher",
+    "pages/specialDesc/specialDesc",
+    "pages/testList/testList",
+    "pages/logs/logs",
+    "pages/lovelisten/index",
+    "pages/belles/index",
+    "pages/classification/index",
+    "pages/login/forget",
+    "pages/lesdetail/detail",
+    "pages/login/active",
+    "pages/meiwen/meiwen",
+    "pages/aiting/aiting",
+    "pages/zuijinxuexi/zuijinxuexi",
+    "pages/zhuanti/zhuanti",
+    "pages/serach/index",
+    "pages/live/index",
+    "pages/lesdetail/detailx",
+    "pages/Study/Study",
+    "pages/videodemo/demo",
+    "pages/login/other",
+    "pages/Curriculum/webview",
+    "pages/electiveCourse/CompulsorySubject",
+    "pages/electiveCourse/CompulsorySubject_xuanxiu",
+    "pages/learn/learn",
+    "pages/electiveCourse/zuixin",
+    "pages/electiveCourse/tuijian",
+    "pages/electiveCourse/zuire",
+    "pages/demo/demo"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#38abfe",
+    "navigationBarTitleText": "浦东分院",
+    "navigationBarTextStyle": "#ffffff",
+    "enablePullDownRefresh": false,
+    "backgroundColor": "#38abfe"
+  },
+  "tabBar": {
+    "color": "#5c5f6a",
+    "selectedColor": "#38abfe",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/electiveCourse/electiveCourse",
+        "iconPath": "image/tab6.png",
+        "selectedIconPath": "image/tab6-sel.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/tab5.png",
+        "selectedIconPath": "image/tab5-sel.png",
+        "text": "学习"
+      },
+      {
+        "pagePath": "pages/mycenter/index",
+        "iconPath": "image/tab4.png",
+        "selectedIconPath": "image/tab4-sel.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

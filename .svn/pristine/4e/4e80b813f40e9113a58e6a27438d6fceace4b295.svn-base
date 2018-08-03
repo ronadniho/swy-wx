@@ -1,0 +1,29 @@
+<view class="classsifica-box" catchtouchmove='true'>
+  <view class="cla-box {{seccate.length=='0' ? 'firline' : ''}}">
+
+    <view class='cla-box-title'>
+      <text>一级分类</text>
+    </view>
+    <view class='cla-box-content'>
+      <view class="sing-item {{item.choice=='0' ? '' : 'active'}}" wx:for="{{frtcate}}" wx:key="id" data-item="{{item}}" bindtap='choiceFir' value='{{first}}'>
+        {{item.name}}
+      </view>
+    </view>
+
+  </view>
+  <view class="cla-box last {{seccate.length=='0' ? '' : 'show'}}">
+
+    <view class='cla-box-title'>
+      <text>二级分类</text>
+    </view>
+
+    <view class='cla-box-content'>
+
+     <view class="sing-item {{item.choice=='0' ? '' : 'active'}}" wx:for="{{seccate}}" wx:key="id" data-item="{{item}}" bindtap='choiceSer' value='{{two}}'>
+        {{item.name}}
+      </view>
+    </view>
+
+  </view>
+
+</view>

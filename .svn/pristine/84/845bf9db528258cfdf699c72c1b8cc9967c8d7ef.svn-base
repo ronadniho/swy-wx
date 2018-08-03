@@ -1,0 +1,17 @@
+<view class="login-container ">
+  <view class='login-panel'>
+ 
+    <view class='login-panel-v1'>
+      <i class="iconfont icon-shouji"></i>
+      <input placeholder="请输入手机号/账户号" value='{{mobile}}' bindinput="inputUser" placeholder-class='login-place-holder' auto-focus/>
+    </view>
+    <view class='login-panel-v1'>
+      <i class="iconfont icon-mn_dunpai_fill"></i>
+      <input placeholder="请输入密码" value='{{password}}' bindinput="inputPwd" placeholder-class='login-place-holder' type="password" auto-focus/>
+    </view>
+    <view class="login-button-panel">
+      <button bindtap="login">登录</button>
+      <button bindtap="otherClick" class='mt20' style="display:none;">免密登录</button>
+    </view>
+  </view>
+</view>

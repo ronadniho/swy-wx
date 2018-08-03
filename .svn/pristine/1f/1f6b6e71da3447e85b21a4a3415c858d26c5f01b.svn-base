@@ -1,0 +1,311 @@
+<view class='les-box'>
+
+
+
+  <view class="les-video-box {{(lesorsee==0 || lesorsee==-1) ? '' : 'see'}}">
+
+    <view class='listen'>
+
+      <image src="{{GlobalInfo.fileUrl}}{{audoCover}}" mode='aspectFill' bindtap='animationClick'></image>
+
+
+      <view animation="{{animationData}}" class='listen-panel'>
+        <view class='listen-panel-bg'>
+        </view>
+        <view class='listen-panel-content'>
+          <view class="listen-panel-play {{audioAction.method == 'pause' ? '' : 'play'}}">
+            <i class="iconfont icon-bofang1 " bindtap="playAudio"></i>
+            <i class="iconfont icon-zanting pause-play" bindtap="pauseAudio"></i>
+          </view>
+
+          <view class='listen-panel-start-end'>
+            <text>{{curTimeString}}</text>
+          </view>
+
+          <view class='listen-panel-process'>
+            <slider bindchange="timeSliderChanged" value="{{percent}}" selected-color="#c6c3c3" block-size="15" />
+          </view>
+
+          <view class='listen-panel-start-end'>
+            <text>{{durationString}}</text>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+    <audio style="display:none;" src="{{audoSrc}}" action="{{audioAction}}" bindtimeupdate="audioTimeUpdated" bindended="audioEnd" controls></audio>
+
+    <video id="lessVideo" autoplay="true" src="{{videoSrc}}" bindtimeupdate="videoTimeUpdate" bindfullscreenchange="onVideoChange" bindended="videoBindended" controls>
+    </video>
+
+  </view>
+
+
+  <scroll-view class='les-scroll' scroll-into-view="{{anchor}}" bindscrolltolower="lower" scroll-y bindscroll="scroll">
+
+    <view class='les-title-box'>
+      <view class='les-title-box-content-left'>
+
+        <view class='les-title-box-content-left-desc'>
+
+          <view class='les-title-box-content-left-desc-content'>
+            <text>{{info.title}}</text>
+          </view>
+
+        </view>
+
+        <view id="title_box_location" class='les-title-box-content-left-star' style="display:none;">
+          <text>学时: {{info.studytime}}</text>
+        </view>
+
+        <view class='les-title-box-content-left-compre'>
+          <i class="iconfont icon-chakan"></i>
+          <text>{{info.clickrate}}</text>
+          <i class="iconfont icon-xingxing little-big"></i>
+          <text>{{info.grade}}</text>
+          <i class="iconfont icon-iconxuexisel"></i>
+          <text>{{info.studytime}}</text>
+        </view>
+
+      </view>
+      <view class='les-title-box-content-right'>
+        <view class="les-title-x-panel {{isshow==0 ? 'hide' : ''}}" bindtap='switchVideo'>
+          <view class='les-title-x-circle'>
+            <i class="iconfont {{lesorsee==1 ? 'icon-erji1' : 'icon-sanjiaoxing'}}"></i>
+          </view>
+          <view class='les-title-x-text '>
+            <text>{{lesorsee==1?'听课':'看课'}}</text>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+
+
+
+    <view id="swiper_id" class="swiper-tab-outer {{fixed_panel==1 ? 'fixed' : ''}}">
+      <scroll-view scroll-x="true">
+        <view class="swiper-tab">
+          <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
+            播放列表
+          </view>
+          <view class="swiper-tab-list {{currentTab==1? 'on' : ''}}" data-current="1" bindtap="swichNav">
+            课程简介
+          </view>
+          <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">
+            已学课程
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+
+    <view class='les-detail'>
+
+      <view class="swiper-box-content {{currentTab==0 ? 'show' : ''}}">
+
+
+        <view class='les-list'>
+
+          <view class='les-list-item' data-item="{{item}}" id="S_{{item.id}}" wx:if="{{item.see==0}}" wx:for="{{info.lessions}}" wx:key="id" bindtap='playClick'>
+
+            <view class='les-list-item-header'>
+              <view class="time-shade  {{item.id==currentID?'show':''}}">
+                <view></view>
+              </view>
+              <view class="time-panel {{item.id==currentID?'show':''}}">
+                <i class="iconfont icon-shijian"></i>{{curTimeString}}
+              </view>
+              <view class='image-box'>
+                <image class='image-ling' mode='aspectFill' wx:if='{{item.vidc==1}}' src='{{GlobalInfo.resourceUrl}}shipin.png'></image>
+                <image class='image-ling' mode='aspectFill' wx:if='{{item.vidc==2}}' src='{{GlobalInfo.resourceUrl}}yinping.png'></image>
+                <image class='image-ling' mode='aspectFill' wx:if='{{item.vidc==3}}' src='{{GlobalInfo.resourceUrl}}yinpingshipin.png'></image>
+
+                <view class='corner-box'>
+                  <text>{{item.isrequire==0?'必':item.isrequire==1?'选':item.isrequire==2?'案':'自'}}</text>
+                </view>
+                <image src="{{GlobalInfo.fileUrl}}{{item.src}}" mode='aspectFill'></image>
+              </view>
+            </view>
+
+            <view class='les-list-item-content'>
+              <view class="les-list-item-content-title">
+                <view class="les-list-item-content-title-content {{item.id==currentID?'currentPlay':''}}">
+                  {{item.title}}
+                </view>
+              </view>
+              <view class='les-list-item-content-tearcher-info'>
+                主讲人:{{item.teachersname}} {{item.description}}
+              </view>
+              <view class='les-list-item-content-status-box'>
+                <view class='les-list-item-content-process-box'>
+                  <view class='les-list-item-content-process'>
+                    <view class="les-list-item-content-process-line {{item.playpercentage=='100%'?'complete':''}}" style="width:{{item.playpercentage}}"></view>
+                  </view>
+                  <view class="les-list-item-content-process-text {{item.playpercentage=='0%'?'':item.playpercentage=='100%'?'complete':'color3'}}">
+                    {{item.playpercentage}}
+                  </view>
+                </view>
+                <view class='les-list-item-content-icons'>
+                  <view class='les-list-item-content-icons-item'>
+                    <i class="iconfont icon-chakan"></i>
+                    <text>{{item.clickrate}}</text>
+                  </view>
+                  <view class='les-list-item-content-icons-item'>
+                    <i class="iconfont icon-xingxing bigstar"></i>
+                    <text>{{item.grade}}</text>
+                  </view>
+                  <view class='les-list-item-content-icons-item'>
+                    <i class="iconfont icon-iconxuexisel"></i>
+                    <text>{{item.studytime}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+
+            <view class="les-item-del-panel {{item.isrequire==3?'show':''}}" data-item="{{item}}" catchtap='cancelStudy'>
+              <i class="iconfont icon-lajitong"></i>
+              <text>删除</text>
+            </view>
+
+
+          </view>
+
+        </view>
+
+
+
+      </view>
+
+
+      <view class="swiper-box-content {{currentTab==1 ? 'show' : ''}}">
+
+        <view class="lession-brief-box">
+
+          <view class='lession-brief-box-content'>
+
+            <rich-text nodes="{{info.comment}}">
+
+            </rich-text>
+
+          </view>
+
+        </view>
+
+      </view>
+
+
+      <view class="swiper-box-content {{currentTab==2 ? 'show' : ''}}">
+
+        <view class='les-list'>
+
+          <view class='les-list-item' wx:for="{{info.selected_lessions}}" wx:key="id">
+
+            <view class='les-list-item-header'>
+              <image src="{{GlobalInfo.fileUrl}}{{item.imagephoto}}" mode='aspectFill'></image>
+            </view>
+
+            <view class='les-list-item-content'>
+              <view class="les-list-item-content-title">
+                <view class="les-list-item-content-title-content {{item.id==currentID?'currentPlay':''}}">
+                  {{item.name}}
+                </view>
+              </view>
+              <view class='les-list-item-content-tearcher-info'>
+                主讲人:{{item.teachersname}} {{item.description}}
+              </view>
+              <view class='les-list-item-content-status-box'>
+                <view class='les-list-item-content-process-box'>
+                  <view class='les-list-item-content-process'>
+                    <view class="les-list-item-content-process-line {{item.playpercentage=='100%'?'complete':''}}" style="width:{{item.playpercentage}}"></view>
+                  </view>
+                  <view class="les-list-item-content-process-text {{item.playpercentage=='0%'?'':item.playpercentage=='100%'?'complete':'color3'}}">
+                    {{item.playpercentage}}
+                  </view>
+                </view>
+                <view class='les-list-item-content-icons'>
+                  <view class='les-list-item-content-icons-item'>
+                    <i class="iconfont icon-chakan"></i>
+                    <text>{{item.clickrate}}</text>
+                  </view>
+                  <view class='les-list-item-content-icons-item'>
+                    <i class="iconfont icon-xingxing bigstar"></i>
+                    <text>{{item.grade}}</text>
+                  </view>
+                  <view class='les-list-item-content-icons-item'>
+                    <i class="iconfont icon-iconxuexisel"></i>
+                    <text>{{item.studytime}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+
+          </view>
+
+        </view>
+
+
+
+      </view>
+
+
+
+    </view>
+
+
+
+
+
+  </scroll-view>
+
+  <view class='les-button-panel'>
+
+    <view class='les-button-panel-item' bindtap='collectionClick'>
+      <text>{{info.ifcollectedcourse=='-1' ? '' :  info.ifcollectedcourse=='0' ? '收藏' : '取消收藏'}}</text>
+    </view>
+
+    <view class="les-button-panel-item evaluate" bindtap='openEvlu'>
+      <text>{{info.isappraise=='-1' ? '' :  info.isappraise=='0' ? '评价':'已评价'}}</text>
+    </view>
+
+
+
+  </view>
+
+</view>
+
+<view class="les-shade-box {{eva_panel==0 ? '' : 'show'}}">
+</view>
+
+<view class="les-evaluate-box {{eva_panel==0 ? '' : 'show'}}">
+  <view class='les-evaluate-content'>
+    <view class='les-evaluate-content-inner'>
+
+      <view class='les-evaluate-line-box' wx:for="{{evs}}" wx:key="itemid">
+        <text>{{item.itemname}}</text>
+        <i data-item="{{item}}" bindtap='evaluateClick' data-star="1" class="iconfont icon-pingjiaxingxing {{item.rate>=1 ? 'ative' : ''}}"></i>
+        <i data-item="{{item}}" bindtap='evaluateClick' data-star="2" class="iconfont icon-pingjiaxingxing {{item.rate>=2 ? 'ative' : ''}}"></i>
+        <i data-item="{{item}}" bindtap='evaluateClick' data-star="3" class="iconfont icon-pingjiaxingxing {{item.rate>=3 ? 'ative' : ''}}"></i>
+        <i data-item="{{item}}" bindtap='evaluateClick' data-star="4" class="iconfont icon-pingjiaxingxing {{item.rate>=4 ? 'ative' : ''}}"></i>
+        <i data-item="{{item}}" bindtap='evaluateClick' data-star="5" class="iconfont icon-pingjiaxingxing {{item.rate>=5 ? 'ative' : ''}}"></i>
+        <text>{{item.percent}}分</text>
+      </view>
+
+      <view class='les-evaluate-submit-box' bindtap='evaluateSubmit'>
+        <text>提交</text>
+      </view>
+
+    </view>
+
+    <view class='les-evaluate-close-panel'>
+      <i class="iconfont icon-ego-guanbi" bindtap='closeEvlu'></i>
+    </view>
+
+  </view>
+</view>
+
+<view class="les-none-les {{lesnone==1 ? 'show' : ''}}">
+  <view class='les-none-les-box'>当前无课程</view>
+</view>

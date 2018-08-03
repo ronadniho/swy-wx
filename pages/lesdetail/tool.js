@@ -1,0 +1,62 @@
+function sec_to_time(s) {
+  var t = "";
+  if (s > -1) {
+    var hour = Math.floor(s / 3600);
+    var min = Math.floor(s / 60) % 60;
+    var sec = s % 60;
+
+    if (hour < 10) {
+      if (hour >= 1) {
+        t = '0' + hour + ":";
+      }
+    } else {
+      t = hour + ":";
+    }
+
+    if (min < 10) {
+      t += "0";
+    }
+    t += min + ":";
+    if (sec < 10) {
+      t += "0";
+    }
+    t += sec.toFixed(0);
+  }
+  return t;
+}
+
+function full_sec_to_time(s) {
+  var t = "";
+  if (s > -1) {
+    var hour = Math.floor(s / 3600);
+    var min = Math.floor(s / 60) % 60;
+    var sec = s % 60;
+
+    if (hour < 10) {
+      if (hour >= 1) {
+        t = '0' + hour + ":";
+      }
+      else{
+        t = "00:";
+      }
+    } else {
+      t = hour + ":";
+    }
+
+    if (min < 10) {
+      t += "0";
+    }
+    t += min + ":";
+    sec = parseInt(sec);
+    if (sec < 10) {
+      t += "0";
+    }
+    t += sec;
+  }
+  return t;
+}
+
+module.exports = {
+  sec_to_time: sec_to_time,
+  full_sec_to_time: full_sec_to_time
+}

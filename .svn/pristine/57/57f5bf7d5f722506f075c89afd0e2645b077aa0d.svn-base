@@ -1,0 +1,274 @@
+page {
+  height: 100%;
+}
+.container {
+  height: 100%;
+  /*题目详情*/
+  /*答题卡*/
+}
+.container .question {
+  width: 100%;
+}
+.container .question .test {
+  margin: 0 27rpx;
+  position: relative;
+}
+.container .question .test.next {
+  animation:myNext .6s;
+}
+.container .question .test.prev {
+  animation:myPrev .6s;
+}
+@keyframes myNext{
+  0%{
+    opacity: 0;
+    right: -100%;
+  }
+  100%{
+    right: 0;
+    opacity: 1;
+  }
+}
+@keyframes myPrev{
+  0%{
+    opacity: 0;
+    left: -100%;
+  }
+  100%{
+    left: 0;
+    opacity: 1;
+  }
+}
+.container .question .test text {
+  color: #5a626b;
+  line-height: 60rpx;
+  font-size: 29rpx;
+}
+.container .question .test .test-description {
+  padding-bottom: 150rpx;
+}
+.container .question .test .test-description .radio,
+.container .question .test .test-description .checkbox {
+  display: block;
+  margin-top: 47rpx;
+}
+.container .question .test .test-description .radio radio,
+.container .question .test .test-description .checkbox radio,
+.container .question .test .test-description .radio checkbox,
+.container .question .test .test-description .checkbox checkbox {
+  width: 72rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+}
+.container .question .test .test-description .radio text,
+.container .question .test .test-description .checkbox text {
+  color: #5a626b;
+  line-height: 72rpx;
+  vertical-align: middle;
+  font-size: 27rpx;
+}
+.container .question .button-group {
+  position: fixed;
+  bottom: 35rpx;
+  width: 100%;
+  flex-flow: row nowrap;
+}
+.container .question .button-group view {
+  flex-grow: 1;
+}
+.container .question .button-group view button {
+  width: 258rpx;
+  background-color: #fff;
+  color: #626262;
+}
+.container .question .button-group view:last-child {
+  text-align: right;
+}
+.container .question .button-group button.active {
+  background-color: #39abff;
+  color: #fff;
+}
+.container .action.flex {
+  flex-flow: row nowrap;
+  border-bottom: 1rpx solid  #e7e7e7;
+  line-height: 74rpx;
+  padding: 14rpx 24rpx;
+  /* 1/50题 */
+  /*答题卡和标记*/
+}
+.container .action.flex view.flex-box {
+  flex-grow: 1;
+}
+.container .action.flex view.flex-box text {
+  color: #626262;
+  font-size: 19rpx;
+}
+.container .action.flex view.flex-box text:nth-child(2) {
+  font-size: 29rpx;
+}
+.container .action.flex view.flex-box text.current {
+  color: #39abff;
+  font-size: 26rpx;
+}
+.container .action.flex .flex-box.flex {
+  justify-content: flex-end;
+  align-items: center;
+}
+.container .action.flex .flex-box.flex view.pad-icon {
+  line-height: 58rpx;
+  padding: 0 23rpx;
+}
+.container .action.flex .flex-box.flex view.pad-icon text {
+  color: #616161;
+  font-size: 20rpx;
+  vertical-align: middle;
+}
+.container .action.flex .flex-box.flex view.pad-icon image {
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+.container .action.flex .flex-box.flex .sign-icon,
+.container .action.flex .flex-box.flex .card-icon {
+  border: 1rpx solid #c9c9c9;
+  border-radius: 6rpx;
+  margin: 0 8rpx;
+}
+.container .action.flex .flex-box.flex .sign-icon image {
+  width: 25rpx;
+  height: 33rpx;
+}
+.container .action.flex .flex-box.flex .card-icon image {
+  width: 27rpx;
+  height: 33rpx;
+}
+.container .action.flex view.flex-box:nth-child(2) {
+  flex-grow: 3;
+  justify-content: flex-end;
+}
+.container .action.flex view.flex-box:nth-child(2) .time {
+  height: 77rpx;
+  vertical-align: middle;
+  display: inline-block;
+  margin-left: 17rpx;
+  margin-right: 51rpx;
+}
+.container .action.flex view.flex-box:nth-child(2) .time .border {
+  display: block;
+  text-align: center;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 77rpx;
+  border-top: 2rpx solid #000;
+  border-left: 2rpx solid transparent;
+  border-right: 2rpx solid transparent;
+  border-bottom: 2rpx solid #000;
+  border-radius: 50%;
+  position: relative;
+  top: 50%;
+  margin-top: -20rpx;
+}
+.container .action.flex view.flex-box:nth-child(2) .time .border span {
+  display: inline-block;
+  width: 67rpx;
+  height: 20rpx;
+  font-size: 20rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -33.5rpx;
+  margin-top: -36rpx;
+}
+.container .title {
+  padding: 0 27rpx;
+}
+.container .title text {
+  line-height: 88rpx;
+  font-size: 31rpx;
+  color: #626262;
+  font-weight: 600;
+}
+@keyframes myBottom{
+  0%{
+    opacity: 0;
+    top: -100%;
+  }
+  100%{
+    top: 0;
+    opacity: 1;
+  }
+}
+.container .result{
+  position: relative;
+}
+.container .result.result-show{
+  animation:myBottom .6s;
+}
+.container .result .title.flex {
+  flex-flow: row nowrap;
+  border: 0;
+  font-size: 32rpx;
+  height: 88rpx;
+  padding: 0 28rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #c9c9c9;
+  margin-bottom: 30rpx;
+}
+.container .result .title.flex text {
+  flex-grow: 1;
+  text-align: left;
+}
+.container .result .title.flex icon {
+  text-align: right;
+  flex-grow: 1;
+  line-height: 88rpx;
+}
+.container .result .test-list .test-title {
+  color: #9c9c9c;
+  font-size: 25rpx;
+  margin-left: 25rpx;
+  margin-top: 7rpx;
+}
+.container .result .test-list .float {
+  width: 100%;
+}
+.container .result .test-list .float .test-item {
+  width: 20%;
+}
+.container .result .test-list .float .test-item text {
+  display: block;
+  text-align: center;
+  width: 70rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border: 8rpx solid  #cfcfcf;
+  border-radius: 50%;
+  font-size: 24rpx;
+  color: #626262;
+  margin: 20rpx auto 20rpx;
+}
+.container .result .test-list .float .test-item.sign text {
+  border: 8rpx solid  #1F86FF;
+}
+.container .result .test-list .float .test-item.no text {
+  background-color: #39abff;
+  color: #fff;
+}
+.container .result .test-list:last-child {
+  padding-bottom: 200rpx;
+}
+.container .result .submit {
+  position: fixed;
+  bottom: 0;
+  padding: 15rpx 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+.container .result button {
+  color: #fff;
+  background-color: #39abff;
+  padding: 0 144rpx;
+  line-height: 88rpx;
+  display: inline-block;
+  margin: 0 auto;
+}

@@ -1,0 +1,694 @@
+/**special.wxss**/
+@import "/pages/classification/index.wxss";
+
+.container {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  background: #f2f2f2;
+}
+.bot {
+  height: 196rpx;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+/* 分类 */
+
+.container .AssociativeSearch {
+  position: fixed;
+  margin-top: 17rpx;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  border-bottom: 1px solid #a8a8a8;
+}
+
+.container .AssociativeSearch .AssociativeSearch-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.6;
+  z-index: 99;
+}
+
+.container .header {
+  height: 90rpx;
+  width: 100%;
+  background: #fff;
+  padding: 18rpx 0;
+  line-height: 50%;
+  margin-bottom: 17epx;
+  box-shadow: 1px 1px 1px #a8a8a8;
+}
+
+.container .header-box {
+  display: flex;
+}
+
+.container .header .header-fenlei, .container .header .header-message {
+  flex: 1;
+  text-align: center;
+}
+
+.container .header .header-fenlei {
+  margin: 12rpx 0rpx 0 15rpx;
+}
+
+.container .header .font-fenlei {
+  font-family: 'iconfont';
+  font-weight: 500;
+  color: #a8a8a8;
+  font-size: 42rpx;
+  font-style: normal;
+  line-height: 30rpx;
+}
+
+.container .header .font-fenlei .icon-fenlei {
+  font-size: 39rpx;
+}
+
+.container .header .header-search {
+  display: flex;
+  flex: 7;
+  padding: 7rpx;
+  margin-top: 4rpx;
+  width: 100%;
+  border-radius: 50rpx;
+  background: #fff;
+  height: 50rpx;
+  border: 1px solid #a8a8a8;
+  margin-right: 25rpx;
+}
+
+.container .header .header-search .input {
+  flex: 5;
+  background: #fff;
+  margin-top: -2rpx;
+  margin-right: 5rpx;
+  margin-left: 20rpx;
+  font-size: 31rpx;
+  padding-top: 6rpx;
+}
+
+.container .header .header-search .search-img {
+  flex: 1;
+  text-align: center;
+  padding-top: 17rpx;
+  color: #cacaca;
+}
+
+.container .header .header-search .search-img .iconsearch {
+  font-size: 41rpx;
+}
+
+.container .header text {
+  font-size: 20rpx;
+  color: #a8a8a8;
+}
+
+.container .header .header-fenlei .close {
+  font-size: 31rpx;
+  margin-top: 21rpx;
+  color: #a8a8a8;
+}
+/*banner图  */
+.banner{
+  width: 100%;
+  height: 377rpx;
+}
+.banner image{
+  width: 100%;
+  height: 377rpx;
+}
+.banner-box{
+  display: block;
+  width: 750rpx;
+  height: 170rpx;
+  background: #ffffff;
+}
+.banner-box .lis{
+  display: flex;
+}
+.banner-box .banner-lis{
+  flex: 1;
+  margin-top: 25rpx;
+  text-align: center;
+}
+.banner-box .banner-lis view{
+  color: #626262;
+  font-size: 22rpx;
+}
+.banner-box .banner-lis .lis-lis image{
+  width: 60rpx;
+  height: 60rpx;
+  z-index: 999;
+}
+.banner-box .banner-lis .lis-lis{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 90rpx;
+  margin: 0 auto;
+  background: linear-gradient(#ffebd2,#ffadb3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/*内容栏  */
+
+.container .box {
+  width: 100%;
+  background: #f2f2f2;
+}
+
+.container .box .box-nav {
+  display: flex;
+  height: 90rpx;
+  margin: 10rpx 0 3rpx 0;
+  line-height: 58rpx;
+}
+
+/*司局级必修专题  */
+
+.sjjbxzt-container, Teacher-container {
+  width: 100%;
+  padding: 0rpx;
+  margin-top: 10rpx;
+  box-shadow: 0rpx 5rpx 5rpx rgba(0, 0, 0, 0.05);
+}
+
+.sjjbxzt-title, Teacher-title {
+  position: relative;
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: left;
+  box-sizing: border-box;
+  padding: 0rpx 30rpx;
+  font-size: 30rpx;
+  color: #616161;
+  border-bottom: 1px solid #dcdcdc;
+  margin-bottom: 10rpx;
+  background: #fff;
+}
+
+.content-item .item-zhuanti {
+  position: absolute;
+  left: 20rpx;
+  top: 20rpx;
+  color: #fff;
+  font-size: 22rpx;
+  background-color: #38abfe;
+  z-index: 9;
+  padding: 5rpx 10rpx;
+  border-radius: 7rpx 0 0rpx 0rpx;
+}
+
+.active-color {
+  color: #1f84d4;
+  font-size: 26rpx;
+}
+
+.item-container {
+  width: 100%;
+  height: 685rpx;
+  box-sizing: border-box;
+  padding: 27rpx 20rpx 40rpx 0;
+}
+
+.item-container text {
+  color: #f14141;
+}
+
+.iitem {
+  box-sizing: border-box;
+  float: left;
+  width: 340rpx;
+  height: 329rpx;
+  font-size: 26rpx;
+  margin-left: 25rpx;
+}
+
+.iitem image {
+  width: 100%;
+  height: 230rpx;
+}
+
+.sjzt {
+  display: flex;
+  margin-top: 10rpx;
+}
+
+.sjzt-bixiu {
+  flex: 1;
+}
+
+.sj-text {
+  font-size: 25rpx;
+  color: #616161;
+  padding: 0 4rpx;
+}
+
+.sj-peo {
+  color: #a9a9a9;
+  margin: 0 3rpx;
+  font-size: 25rpx;
+}
+
+.sjzt-size {
+  color: #999;
+  font-size: 24rpx;
+}
+
+.content-item .schedulecomp {
+  color: #f34141;
+  font-size: 32rpx;
+  align-items: center;
+  height: 38rpx;
+}
+
+.content-item .schedulecomp myProgress {
+  display: block;
+  height: 17rpx;
+  border-radius: 25px;
+  position: relative;
+  background-color: #ebebeb;
+  flex-grow: 4;
+}
+
+.content-item .schedulecomp myProgress div {
+  position: absolute;
+  display: block;
+  height: 17rpx;
+  border-radius: 25px;
+  background-color: #ffa016;
+}
+
+.content-item .schedulecomp text {
+  font-size: 24rpx;
+  color: #ffa016;
+}
+
+.subcolor {
+  flex: 1;
+  color: #a8a8a8;
+  font-size: 24rpx;
+}
+
+.item-jieshao {
+  color: #a8a8a8;
+  font-size: 25rpx;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/*课程  */
+
+.tabcontent-container {
+  width: 100%;
+}
+
+.tabcontent-container .content-item {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 25rpx 20rpx 24rpx 314rpx;
+  margin: 10rpx 0;
+  background: #fff;
+  box-shadow: 0rpx 5rpx 5rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+  height: 222rpx;
+  overflow: hidden;
+  font-size: 36rpx;
+}
+
+.content-item .image {
+  position: absolute;
+  left: 20rpx;
+  top: 20rpx;
+  width: 280rpx;
+  height: 174rpx;
+}
+
+.content-item .erji-i {
+  position: absolute;
+  left: 127rpx;
+  top: 78rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin: 0 auto;
+  z-index: 99;
+  text-align: center;
+  line-height: 90rpx;
+}
+
+.content-item .erji-i image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.content-item .items {
+  height: 80rpx;
+  line-height: 40rpx;
+  margin-bottom: 10rpx;
+  box-sizing: border-box;
+  color: #626262;
+  font-size: 30rpx;
+  margin-top: 5rpx;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.content-item .item-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 40rpx;
+  box-sizing: border-box;
+  color: #626262;
+  font-size: 30rpx;
+}
+
+/* .content-item .change {
+  display: flex;
+ 
+} */
+
+/* .content-item .change .liss{
+  flex: 2;
+} */
+
+/* .content-item .change .lis{
+  flex: 1;
+  background: red;
+  margin:10rpx
+} */
+
+.content-item .zuozhe {
+  display: flex;
+}
+
+.content-item .zuozhe .icons {
+  font-size: 28rpx;
+}
+
+.content-item .zuozhe .iconss {
+  font-size: 30rpx;
+}
+
+.content-item .item-zjr {
+  flex: 1;
+  line-height: 36rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+  font-size: 22rpx;
+}
+
+.content-item .item-hot {
+  flex: 1;
+  height: 70rpx;
+  margin-bottom: 10rpx;
+  line-height: 36rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+  font-size: 29rpx;
+}
+
+.content-item .item-zjr i {
+  margin-right: 4rpx;
+}
+
+.content-item .item-time {
+  position: absolute;
+  left: 20rpx;
+  top: 20rpx;
+  color: #fff;
+  font-size: 20rpx;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 9;
+  padding:0rpx 21rpx 0rpx 15rpx;
+  border-top-left-radius: 7rpx;
+  width: 138rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+}
+.content-item .item-time .times{
+  font-size: 25rpx;
+  margin-right: 14rpx;
+}
+.content-item i {
+  margin-right: 2rpx;
+}
+
+.tab-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0rpx 130rpx 0rpx 20rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+  box-shadow: 0rpx 5rpx 5rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+  font-size: 36rpx;
+}
+
+.tab-item {
+  display: inline-block;
+  height: 90rpx;
+  box-sizing: border-box;
+  margin-right: 30rpx;
+  padding: 20rpx 0rpx;
+  font-size: 30rpx;
+  color: #616161;
+}
+
+.tab-item.active {
+  color: #38abfe;
+  border-bottom: 2px solid #38abfe;
+}
+
+.tab-container scroll-view {
+  height: 90rpx;
+  width: 100%;
+  line-height: 55rpx;
+}
+
+.more-tab {
+  position: absolute;
+  right: 20rpx;
+  top: 0rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+
+.tablist {
+  white-space: nowrap;
+}
+
+.tabcontent-container .hover-class {
+  background-color: #f2f2f2;
+}
+
+/*教师  */
+
+.Teacher-container {
+  width: 100%;
+  padding: 0rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+  box-shadow: 0rpx 5rpx 5rpx rgba(0, 0, 0, 0.05);
+}
+
+.Teacher-title {
+  position: relative;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: left;
+  box-sizing: border-box;
+  padding: 0rpx 30rpx;
+  font-size: 36rpx;
+  color: #616161;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.Teacher-photo {
+  position: relative;
+  width: 100%;
+  height: 268rpx;
+  overflow: hidden;
+}
+
+.Teacher-photo scroll-view {
+  height: 268rpx;
+}
+
+.scroll_box {
+  width: 100%;
+  height: 281rpx;
+  overflow: hidden;
+  padding: 34rpx 0;
+  background: #fff;
+  white-space: nowrap;
+}
+
+.item_list {
+  height: auto;
+  margin-right: 32rpx;
+  display: inline-block;
+}
+
+.item_book_img {
+  width: 205rpx;
+  height: 269rpx;
+}
+
+.item_list .names {
+  position: absolute;
+  top: 0;
+  width: 205rpx;
+  height: 269rpx;
+}
+
+.item_list .name-top {
+  width: 205rpx;
+  height: 228rpx;
+}
+
+.item_list .name {
+  background: black;
+  opacity: 0.4;
+  color: #fff;
+  width: 205rpx;
+  height: 43rpx;
+  line-height: 43rpx;
+  text-align: center;
+}
+
+.container .box .box-nav .box-nav-list {
+  flex: 1;
+  background: #fff;
+  box-shadow: 1px 1px 1px #a8a8a8;
+  text-align: center;
+}
+
+.container .box .box-nav .box-nav-list .zuixin {
+  margin: 0 52rpx;
+  padding: 19rpx 0;
+}
+
+.container .box .box-nav .box-nav-list .nav {
+  margin: 20rpx 0;
+  font-size: 30rpx;
+}
+
+.container .box .box-contant {
+  display: flex;
+  flex-direction: column;
+}
+
+.container .box .box-contant .box-contant-list {
+  flex: 1;
+  display: flex;
+  box-shadow: 1px 1px 1px #a8a8a8;
+  background: #fff;
+  margin: 17rpx 0;
+  padding: 25rpx 20rpx 25rpx 25rpx;
+  height: 230rpx;
+}
+
+.container .box .box-contant .hover-class {
+  background-color: #f2f2f2;
+}
+
+.container .box .box-contant .box-contant-list .img {
+  flex: 1;
+  margin-right: 15rpx;
+  padding-top: 8rpx;
+}
+
+.container .box .box-contant .box-contant-list .img .time {
+  width: 145rpx;
+  height: 30rpx;
+  background: black;
+  opacity: 0.3;
+  text-align: left;
+  line-height: 19rpx;
+  position: absolute;
+  z-index: 999;
+  color: #fff;
+}
+
+.container .box .box-contant .box-contant-list .img .time text {
+  font-size: 25rpx;
+  margin: 0 10rpx;
+}
+
+.container .box .box-contant .box-contant-list .img image {
+  width: 298rpx;
+  height: 210rpx;
+}
+
+.container .box .box-contant .box-contant-list .jianjie {
+  flex: 2;
+}
+
+.container .box .box-contant .box-contant-list .jianjie .title {
+  font-size: 34rpx;
+  color: #616161;
+  height: 132rpx;
+  margin-top: 10rpx;
+}
+
+.container .box .box-contant .box-contant-list .jianjie .jieshao {
+  font-size: 30rpx;
+  color: #afafaf;
+  height: 38rpx;
+}
+
+.container .box .box-contant .box-contant-list .jianjie .jieshao span {
+  margin-left: 10rpx;
+}
+
+.empty-container {
+  padding: 100rpx 0rpx;
+  width: 100%;
+  text-align: center;
+  color: #c9c9c9;
+}
+
+.empty-container view {
+  margin-top: 50rpx;
+}
+
+.iitem-block {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10rpx;
+}
+
+.iitem-block image {
+  width: 100%;
+  height: 430rpx;
+}

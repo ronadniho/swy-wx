@@ -1,0 +1,146 @@
+page {
+  height: 100%;
+}
+
+.active-box{
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  padding: 40rpx;
+}
+
+.active-box-item {
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  padding: 0rpx;
+  width: 100%;
+  height: 80rpx;
+  position: relative;
+  padding-left: 120rpx;
+  margin-top: 20rpx;
+}
+
+.active-box-item.verfiy-box {
+  padding-right: 190rpx;
+}
+
+.active-box-item.spend-box {
+  height: 180rpx;
+}
+
+.active-box-item .desc-txt-panel {
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  padding: 0rpx;
+  width: 100rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  text-align: right;
+}
+
+.active-box-item .desc-txt-panel.two-space {
+   word-spacing:15rpx; 
+   letter-spacing: 1rpx;
+}
+
+.active-box-item .desc-txt-panel text {
+  font-size: 27rpx;
+  line-height: 80rpx;
+  color:#adabab;
+}
+
+.active-box-item .active-box-item-content {
+  box-sizing: border-box;
+  margin: 0rpx;
+  padding: 0rpx;
+  width: 100%;
+  height: 80rpx;
+  border: 1rpx solid #dbdbdb;
+  padding-left: 20rpx;
+}
+
+.active-box-item .active-box-item-content input{
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  padding: 0rpx;
+  outline: none;
+  width: 100%;
+  height: 80rpx;
+  line-height:80rpx;
+  display: inline-block;
+  font-size: 30rpx;
+}
+
+.active-box-item .active-box-item-content .password-desc{
+  color: #d0d0d0;
+  font-size: 30rpx;
+  line-height: 10rpx;
+}
+
+.active-verfiy-box{
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  padding: 0rpx;
+  outline: none;
+  position: absolute;
+  right: 0rpx;
+  top:0rpx;
+  width: 180rpx;
+  height: 100%;
+}
+
+.active-verfiy-box.send{
+  border: 1rpx solid #dbdbdb;
+  padding-left: 12rpx;
+}
+
+.active-verfiy-box image{
+  width: 180rpx;
+  height: 80rpx;
+}
+
+.active-verfiy-box text{
+  width: 180rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #747272;
+  font-size: 30rpx;
+}
+
+
+.login-button-panel {
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  height: 150rpx;
+  width: 100%;
+}
+
+.login-button-panel button {
+  box-sizing: border-box;
+  border: none;
+  padding: 0rpx;
+  margin: 0rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  width: 100%;
+  background-color: #F14141;
+  color: #fff;
+  border-radius: 5rpx;
+  margin-top: 30rpx;
+}
+
+
+
+.active-place-holder {
+  color: #989898;
+  font-size: 27rpx;
+}

@@ -1,0 +1,121 @@
+.cintainer {
+  width: 100%;
+}
+
+.container .header {
+  background: #f34141;
+  width: 100%;
+  padding: 18rpx 0;
+  line-height: 50%;
+}
+
+.container .header .header-search {
+  display: flex;
+  padding: 7rpx;
+  margin-top: 4rpx;
+  border-radius: 50rpx;
+  background: #fff;
+  width: 547rpx;
+  height: 50rpx;
+  margin: 0 auto;
+}
+.placeholder{
+  font-size: 30rpx;
+}
+.container .header .header-search .input {
+  flex: 5;
+  background: #fff;
+  margin-top: -2rpx;
+  margin-right: 5rpx;
+  margin-left: 20rpx;
+}
+
+.container .header .header-search .search-img {
+  flex: 1;
+  text-align: center;
+  padding-top: 17rpx;
+   color: #ffb0b3;
+}
+
+.container .header .text {
+  margin: 6rpx 0;
+}
+
+.container .header text {
+  font-size: 29rpx;
+  color: #ffb0b1;
+}
+
+/*内容  */
+
+.container .box-contant {
+  display: flex;
+  flex-direction: column;
+}
+
+.container .box-contant .box-contant-list {
+  flex: 1;
+  display: flex;
+  border-bottom: 1px solid #e5e5e5;
+  background: #ffffff;
+  padding: 36rpx 30rpx 36rpx 30rpx;
+  /* height: 220rpx; */
+}
+.container .box-contant .box-contant-list .img{
+  flex: 1;
+ margin-right: 15rpx;
+ padding-top: 8rpx;
+}
+
+.container .box-contant .box-contant-list .img image{
+  width: 160rpx;
+  height: 215rpx;
+}
+.container .box-contant .box-contant-list .jianjie{
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+.container .box-contant .box-contant-list .jianjie .title{
+  flex: 1;
+  font-size: 33rpx;
+  width: 530rpx;
+  color: #333333;
+  font-weight: 600;
+  overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+}
+.container .box-contant .box-contant-list .jianjie .jieshao{
+  flex: 1;
+  font-size: 29rpx;
+  color: #AFAFAF;
+  line-height: 34rpx;
+}
+.container .box-contant .box-contant-list .jianjie .jieshao span{
+  margin-left: 10rpx;
+}
+.container .box-contant .box-contant-list .jianjie .xinxi{
+  flex: 1;
+  display: flex;
+  line-height: 72rpx;
+}
+.container .box-contant .box-contant-list .jianjie .xinxi .time{
+  flex: 2;
+  color: #b9b9b9;
+  font-size: 26rpx;
+}
+.container .box-contant .box-contant-list .jianjie .xinxi .bofang{
+  flex: 1;
+  width: 150rpx;
+  height: 60rpx;
+  background: #efeeeb;
+  text-align: center;
+  line-height: 57rpx;
+  border-radius: 38rpx;
+  color: #fea93a;
+}
+.container .box-contant .box-contant-list .jianjie .xinxi .bofang text{
+  color: #fea93a;
+  font-size: 37rpx;
+}

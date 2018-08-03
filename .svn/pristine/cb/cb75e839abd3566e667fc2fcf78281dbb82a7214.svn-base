@@ -1,0 +1,27 @@
+<view class='container'>
+  <view class='tabcontent-container'>
+    <view class='content-item' bindtap='goDetail' data-itemid="{{item.id}}" wx:for="{{list}}" hover-class="hover-class" wx:key>
+      <view class='item-time'>
+        <i class="iconfont icon-shijian"></i>{{item.realduration}}</view>
+      <image mode='aspectFill' class='brimage' src='{{GlobalInfo.fileUrl}}{{item.imagephoto }}' />
+      <view class='item-title'>{{item.name}}</view>
+      <view class='schedulecomp'>{{item.playpercentage?item.playpercentage:'0%'}}</view>
+      <view class='zuozhe'>
+        <view class='subcolor font24 item-zjr'>
+          <i class='iconfont icon-zhanghuffffffpx'></i>{{item.teachersname}}</view>
+        <view class='subcolor font24'>
+          <i class='iconfont icon-chakan'></i>{{item.clickrate}}</view>
+        <view class='subcolor font24'>
+          <i class='iconfont icon-xingxing'></i>{{item.grade }}</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{showLoading}}" class='list-loading'>
+      <div class="item-loader-container">
+        <div class="la-ball-clip-rotate-multiple la-1x">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+  </view>
+</view>

@@ -1,0 +1,47 @@
+<view class="love-listen-box">
+
+  <view class='love-listen-top'>
+
+    <view class='love-list-top-conte'>
+    </view>
+
+    <image src="http://www.karma-time.com/res/images/music.jpg" mode='aspectFill'></image>
+
+    <view class='love-listen-progess' style="width:{{percent}}%;"></view>
+    <view class='love-listen-progess-curor' style="left:{{percent}}%;">
+      <view class='love-listen-progess-curor-bg'></view>
+      <view class='love-listen-progess-curor-conent'>
+        <text>{{curTimeString}}{{durationString}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='love-video-box'>
+
+    <i class="iconfont icon-play_icon {{audioAction.method == 'pause' ? '' : 'hide'}}" bindtap="playAudio"></i>
+    <i class="iconfont icon-zanting1 {{audioAction.method == 'pause' ? 'hide' : ''}}" bindtap="pauseAudio"></i>
+
+    <audio style="display:none;" src="{{current.src}}" action="{{audioAction}}" bindplay="audioPlayed" bindtimeupdate="audioTimeUpdated" controls></audio>
+
+  </view>
+
+  <view class='love-bottom-box'>
+
+    <view class="item">
+      <i class="iconfont icon-wenjian"></i>
+      <text>文稿</text>
+    </view>
+
+    <view class="item">
+      <i class="iconfont icon-shoucang1"></i>
+      <text>162</text>
+    </view>
+
+    <view class="item">
+      <i class="iconfont icon-201"></i>
+      <text>分享</text>
+    </view>
+
+  </view>
+
+</view>

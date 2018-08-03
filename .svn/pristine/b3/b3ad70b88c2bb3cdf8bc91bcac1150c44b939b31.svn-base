@@ -1,0 +1,40 @@
+<view class='container'>
+  <scroll-view scroll-y='true' class='box-contant'>
+    <view wx:for='{{datas}}' wx:key>
+      <view class='time-nav'>
+        <text>{{item.datatime}}</text>
+      </view>
+      <view class='box-contant-list'>
+        <view class='img'>
+          <view class='time'>
+            <i class='iconfont icon-shijian'></i>
+            <text>{{item.times}}</text>
+          </view>
+          <image src='{{item.imagephoto}}'></image>
+
+        </view>
+        <view class='jianjie'>
+          <view class='title'>{{item.coursewarename}}</view>
+          <view class='jieshao'>主讲人：{{item.teachersname}}</view>
+          <view class='jieshao'>点击量：{{item.dianjiliang}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='box-contant-list' wx:for='{{imagess}}' wx:key>
+      <view class='img'>
+        <view class='time'>
+          <i class='iconfont icon-time'>{{time}}</i>
+          <text>{{item.times}}</text>
+        </view>
+        <image src='{{item.imgs}}'></image>
+
+      </view>
+      <view class='jianjie'>
+        <view class='title'>{{item.title}}</view>
+        <view class='jieshao'>主讲人：{{item.jieshao}}</view>
+        <view class='jieshao'>点击量：{{item.dianjiliang}}</view>
+      </view>
+    </view>
+
+  </scroll-view>
+</view>

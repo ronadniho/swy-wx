@@ -1,0 +1,68 @@
+.container .list {
+  width: 100%;
+}
+.container .list .title {
+  background-color: #f2f2f2;
+  height: 63rpx;
+  line-height: 70rpx;
+  font-size: 24rpx;
+  color: #626262;
+  padding: 0 25rpx;
+}
+.container .list .item {
+  flex-flow: row nowrap;
+  padding: 17rpx 25rpx;
+  border-bottom: 1rpx solid #dcdcdc;
+}
+.container .list .item .item-l {
+  flex-grow: 2;
+}
+.container .list .item .item-l view {
+  width: 576rpx;
+}
+.container .list .item .item-l .abstract {
+  color: #626262;
+  font-size: 32rpx;
+  line-height: 49rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.container .list .item .item-l .progress {
+  font-size: 24rpx;
+  line-height: 41rpx;
+  color: #39abff;
+}
+.container .list .item .item-l .tips {
+  font-size: 24rpx;
+  line-height: 41rpx;
+  color: #a8a8a8;
+}
+.container .list .item .item-r {
+  flex-grow: 1;
+}
+.container .list .item .item-r .flex {
+  height: 100%;
+  align-items: center;
+}
+.container .list .item .item-r .flex button {
+  background-color: #ebebeb;
+  line-height: 60rpx;
+  color: #a8a8a8;
+  font-size: 24rpx;
+  border-radius: 30rpx;
+  border: 1rpx solid transparent;
+  padding: 0 36rpx;
+}
+.container .list .item .item-r .flex button.active {
+  background-color: #39abff;
+  color: #fff;
+}
+.container .list .item .item-r .flex .already-btn {
+  color: #39abff;
+}
+.container .already .title {
+  height: 79rpx;
+  line-height: 89rpx;
+  background: linear-gradient(top, #dedede, #f2f2f2);
+}

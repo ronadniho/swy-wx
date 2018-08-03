@@ -1,0 +1,272 @@
+<!--special.wxml-->
+<view class="container">
+  <!--整体内容  -->
+  <view class="header">
+    <view class='header-box'>
+      <view class="header-fenlei" bindtap='classification'>
+        <view class='font-fenlei'>
+          <i class="iconfont icon-fenlei icon-tubiao13"></i>
+        </view>
+        <view class='text'>
+          <text>分类</text>
+        </view>
+      </view>
+      <view class=" header-search">
+        <input type="text" placeholder="请输入课程名称、授课人" placeholder-style='font-size:26rpx;color:#b2b2b2' class='input' bindinput='bindInput' value="{{inputValue}}" />
+        <view class='search-img' bindtap="searchfilt" wx:if='{{sear}}'>
+          <i class='iconfont icon-sousuo'></i>
+        </view>
+        <!-- <view class='search-img' bindtap="close" wx:if='{{close}}'>
+          <i class='iconfont icon-guanbi'></i>
+        </view> -->
+      </view>
+      <view class="header-fenlei">
+        <view class='close' bindtap='closes'>
+          清空
+        </view>
+        <!-- <view class='font-fenlei'>
+          <i class="iconfont  icon-shoucang2"></i>
+        </view>
+        <view class='text'>
+          <text>收藏</text>
+        </view> -->
+      </view>
+    </view>
+    <!-- 分类classification -->
+    <view wx:if='{{turn}}' class='AssociativeSearch'>
+      <view class='AssociativeSearch-back'></view>
+      <include src='/pages/classification/index.wxml' />
+    </view>
+  </view>
+  <view class='box'>
+    <!--导航  -->
+    <view class='box-nav'>
+      <view class="box-nav-list">
+        <view class="zuixin tab-item {{currentTab==0? 'active':''}}">
+          <text data-current="0" bindtap='tabNav' class='nav'>推荐</text>
+        </view>
+      </view>
+      <view class="box-nav-list">
+        <view class="zuixin tab-item {{currentTab==1? 'active':''}}">
+          <text data-current="1" bindtap='tabNav' class='nav'>专题</text>
+        </view>
+      </view>
+      <view class="box-nav-list">
+        <view class="zuixin tab-item {{currentTab==2? 'active':''}}">
+          <text data-current="2" bindtap='tabNav' class='nav'>课程</text>
+        </view>
+      </view>
+    </view>
+    <!--内容  -->
+    <scroll-view scroll-y wx:if="{{currentTab=='0'}}" class='box-contant' style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+      <!--司局级必修专题  -->
+      <view class='sjjbxzt-container'>
+        <view class='sjjbxzt-title'>
+          司局级2018年上半年必修专题
+          <view class='fr active-color font30' bindtap='morezt'>更多
+            <i class="iconfont icon-xiayige"></i>
+          </view>
+        </view>
+        <view class='item-container cl'>
+          <view class="iitem" wx:for="{{PlanInClassList}}" wx:key="index" bindtap='detailsj' data-index='{{index}}' id='{{item.id}}'>
+            <image mode='aspectFill' class='rimage' src='{{GlobalInfo.fileUrl}}{{item.image_servername}}' />
+            <view class='sj-text'>必修:
+              <text>{{item.requiredstudytime}}</text>学时
+              <view class='fr'>选修:
+                <text>{{item.electivestudytime}}</text>学时</view>
+            </view>
+            <view class='sj-peo'>已报名人数:{{item.signnumber}}</view>
+          </view>
+        </view>
+      </view>
+
+      <!--课程  -->
+      <view class='tab-container'>
+        <scroll-view scroll-x>
+        
+          <view class='tablist'>
+            <view class='tab-item {{selTabIndex==1?"active":""}}' data-tabindex="1" bindtap='onChangeTab'>最新课程</view>
+            <view class='tab-item {{selTabIndex==2?"active":""}}' data-tabindex="2" bindtap='onChangeTab'>最热课程</view>
+          </view>
+        </scroll-view>
+        <view class='more-tab active-color font30' bindtap='morekc'>更多
+          <i class="iconfont icon-xiayige"></i>
+        </view>
+      </view>
+
+      <view class='tabcontent-container' wx:if="{{selTabIndex=='1'}}">
+        <view class='content-item' wx:for="{{coursewarelist_1}}" hover-class="hover-class" wx:key data-index='{{index}}' id='{{item.coursewareid}}' bindtap='detailkcnew'>
+          <view class='item-time'>
+            <i class="iconfont icon-shijian"></i>{{item.duration}}</view>
+          <image class='image rimage'  mode='aspectFill' src='{{GlobalInfo.fileUrl}}{{item.imagephoto }}' />
+          <view class='item-title'>{{item.coursewarename}}</view>
+          <view class='zuozhe'>
+            <view class='subcolor font30 item-zjr'>
+              <i class='iconfont icon-rencai'></i>{{item.teachersname}}</view>
+            <view class='subcolor font30'>
+              <i class='iconfont icon-chakan'></i>{{item.clickrate}}</view>
+            <view class='subcolor font30'>
+              <i class='iconfont icon-xingxing'></i>{{item.grade }}</view>
+          </view>
+          <view class='erji'>
+            <view class='erji-i'>
+              <!--音频  -->
+              <image mode='aspectFill' wx:if='{{item.activetype==2}}' src='{{GlobalInfo.resourceUrl}}yinping.png'></image>
+              <!--视频  -->
+              <image mode='aspectFill' wx:if='{{item.activetype==1}}' src='{{GlobalInfo.resourceUrl}}shipin.png'></image>
+              <!--视频音频  -->
+              <image mode='aspectFill' wx:if='{{item.activetype==3}}' src='{{GlobalInfo.resourceUrl}}yinpingshipin.png'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='tabcontent-container' wx:if="{{selTabIndex=='2'}}">
+        <view class='content-item' wx:for="{{coursewarelist_2}}" hover-class="hover-class" wx:key data-index='{{index}}' id='{{item.coursewareid}}' bindtap='detailkchot'>
+          <view class='item-time'>
+            <i class="iconfont icon-shijian"></i>{{item.duration}}</view>
+          <image class='image rimage' mode='aspectFill' src='{{GlobalInfo.fileUrl}}{{item.imagephoto }}' />
+          <view class='item-title'>{{item.coursewarename}}</view>
+          <view class='zuozhe'>
+            <view class='subcolor item-hot'>
+              <i class='iconfont icon-rencai'></i>{{item.teachersname}}</view>
+            <view class='subcolor'>
+              <i class='iconfont icon-chakan'></i>{{item.clickrate}}</view>
+            <view class='subcolor'>
+              <i class='iconfont icon-xingxing'></i>{{item.grade }}</view>
+          </view>
+
+          <view class='erji'>
+            <view class='erji-i'>
+              <!--音频  -->
+              <image mode='aspectFill' wx:if='{{item.activetype==2}}' src='{{GlobalInfo.resourceUrl}}yinping.png'></image>
+              <!--视频  -->
+              <image mode='aspectFill' wx:if='{{item.activetype==1}}' src='{{GlobalInfo.resourceUrl}}shipin.png'></image>
+              <!--视频音频  -->
+              <image mode='aspectFill' wx:if='{{item.activetype==3}}' src='{{GlobalInfo.resourceUrl}}yinpingshipin.png'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+
+
+    <view class='sjjbxzt-container mb20' wx:if="{{false}}">
+      <view class='sjjbxzt-title'>
+      直播
+      <view bindtap='onGoOtherPage' data-pagepath='live/index'  class='fr active-color font30'>更多<i class="iconfont icon-xiayige"></i></view>
+      </view>
+      <view class='item-container cl' style='height:auto;padding:10rpx;'>
+        <view class="iitem-block">
+          <image mode='aspectFill' src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' />
+          <view class='ellipsis'>这里是标题表是框架是框架的少看电视倒萨倒萨反对反对方的方法的</view>
+          <view class='subcolor font30'>主讲人:时殷弘<view class='fr'>9月9日 14:00-17:20</view></view>
+        </view>
+      </view>
+    </view>
+      <!--教师榜  -->
+      <view class='Teacher-container'>
+        <view class='Teacher-title'>
+          教师榜
+          <view bindtap='onSwitchTabPage' class='fr active-color font30'>更多
+            <i class="iconfont icon-xiayige"></i>
+          </view>
+        </view>
+        <view class="scroll_box">
+          <scroll-view class="scroll-view_x" scroll-x style="width: auto;overflow:hidden;">
+            <view class="item_list" wx:for="{{teachphotoList}}" wx:key bindtap='detailteach' data-index='{{index}}' id='{{item.id}}'>
+              <image src="{{GlobalInfo.fileUrl}}{{item.photo_servername}}" class="item_book_img" mode="aspectFill"></image>
+              <view class='names'>
+              <view class='name-top'></view>
+              <view class='name'>{{item.name}}</view>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+        
+      </view>
+      <!--猜你喜欢  -->
+      <!-- <view class='Teacher-container'>
+            <view class='Teacher-title'>
+              猜你喜欢
+              <view bindtap='onSwitchTabPage' data-pagepath='zhuanti/zhuanti' class='fr active-color font30'>更多
+                <i class="iconfont icon-xiayige"></i>
+              </view>
+            </view>
+            <view class='Teacher-photo'>
+              <scroll-view class='likes' scroll-x='true'>
+                <view wx:for="{{imgUrls}}">
+                  <image mode='aspectFit' src="{{item}}" class="slide-image" style="width:311rpx;height:194rpx;" />
+                  <view class='likes-title'></view>
+                  <view class='star'>
+                    <i class='iconfont icon-xingxing'></i>
+                  </view>
+                  <view>
+                    <text>{{}}</text>人已学习</view>
+                </view>
+              </scroll-view>
+            </view>
+          </view> -->
+          <view class='bot'></view>
+    </scroll-view>
+
+    <!--专题  -->
+
+    <scroll-view scroll-y wx:if="{{currentTab=='1'}}" class='box-contant' style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltoupper='{{refesh}}' bindscrolltolower="loadMore1">
+      <view class='box-contant-list' hover-class="hover-class" wx:for='{{results2}}' wx:key="index" bindtap='detailzt' data-itemid="{{item.id}}" data-index='{{index}}' id='{{item.id}}'>
+        <view class='img'>
+          <image class='rimage' src='{{GlobalInfo.fileUrl}}{{item.image_servername}}'></image>
+        </view>
+        <view class='jianjie'>
+          <view class='title'>{{item.name}}</view>
+          <view class='jieshao'>必修：{{item.requirecount}}
+            <span>选修：{{item.electivecount}}</span>
+          </view>
+          <view class='jieshao'>已报名人数：{{item.signnumber}}</view>
+        </view>
+      </view>
+      <view wx:if="{{searchnull}}" class='empty-container' style='width:100%;'>
+        <image mode='widthFix' src='/image/empty.png' style='width:30%;'></image>
+        <view>您搜索的内容为空，请重新搜索！</view>
+      </view>
+      <view class='bot'></view>
+    </scroll-view>
+
+    <!--课程  -->
+    <scroll-view scroll-y wx:if="{{currentTab=='2'}}" class='box-contant' style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltoupper='{{refesh}}' bindscrolltolower="loadMore2">
+      <view class='tabcontent-container'>
+        <view class='content-item' wx:for="{{list}}" hover-class="hover-class" wx:key data-index='{{index}}' data-itemid="{{item.coursewareid}}" id='{{item.coursewareid}}' bindtap='detailkc'>
+          <view class='item-time'>
+            <i class="iconfont icon-shijian"></i>{{item.duration}}</view>
+          <image  class='rimage image' mode='aspectFill' src='{{GlobalInfo.fileUrl}}{{item.imagephoto }}' />
+          <view class='item-title'>{{item.coursewarename}}</view>
+          <!-- <view class='change' wx:if='{{change}}'>
+          <view class='liss'></view>
+          <view class='lis' bindtap='shang'>上</view>
+          <view class='lis' bindtap='zhong'>中</view>
+          <view class='lis' bindtap='xia'>下</view>
+          </view> -->
+          <view class='zuozhe'>
+            <view class='subcolor font30 item-zjr'>
+              <i class='iconfont icon-rencai'></i>{{item.teachersname}}</view>
+            <view class='subcolor font30'>
+              <i class='iconfont icon-chakan'></i>{{item.clickrate}}</view>
+            <view class='subcolor font30'>
+              <i class='iconfont icon-xingxing'></i>{{item.grade }}</view>
+          </view>
+
+          <!-- <view class='erji'>
+            <view class='erji-i'>
+              <image mode='aspectFill' wx:if='{{item.activetype==2}}' src='{{GlobalInfo.resourceUrl}}yinping.png'></image>
+              <image mode='aspectFill' wx:if='{{item.activetype==1}}' src='{{GlobalInfo.resourceUrl}}shipin.png'></image>
+              <image mode='aspectFill' wx:if='{{item.activetype==3}}' src='{{GlobalInfo.resourceUrl}}yinpingshipin.png'></image>
+            </view>
+          </view> -->
+        </view>
+      </view>
+      <view wx:if="{{searchkecheng}}" class='empty-container' style='width:100%;'>
+        <image mode='widthFix' src='/image/empty.png' style='width:30%;'></image>
+        <view>您搜索的内容为空，请重新搜索！</view>
+      </view>
+      <view class='bot'></view>
+    </scroll-view>
+  </view>
+</view>

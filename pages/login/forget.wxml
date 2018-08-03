@@ -1,0 +1,50 @@
+<view class='active-box'>
+
+  <view class='active-box-item verfiy-box'>
+    <view class='desc-txt-panel'>
+      <text>安全码:</text>
+    </view>
+    <view class='active-box-item-content'>
+      <input placeholder="请输入右侧安全码" bindinput="inputUser" placeholder-class='active-place-holder' auto-focus/>
+    </view>
+    <view class='active-verfiy-box'>
+      <image></image>
+    </view>
+  </view>
+
+  <view class='active-box-item verfiy-box'>
+    <view class='desc-txt-panel'>
+      <text>手机号:</text>
+    </view>
+    <view class='active-box-item-content'>
+      <input placeholder="请输入手机号" bindinput="inputUser" placeholder-class='active-place-holder' auto-focus/>
+    </view>
+    <view class='active-verfiy-box send'>
+      <text>发送验证码</text>
+    </view>
+  </view>
+
+  <view class='active-box-item'>
+    <view class='desc-txt-panel two-space'>
+      <text>验证码:</text>
+    </view>
+    <view class='active-box-item-content' bindtap='sendVify'>
+      <input placeholder="请输入6位手机验证码" bindinput="inputUser" placeholder-class='active-place-holder' auto-focus/>
+    </view>
+  </view>
+
+   <view class='active-box-item spend-box'>
+    <view class='desc-txt-panel two-space'>
+      <text>新密码:</text>
+    </view>
+    <view class='active-box-item-content' bindtap='sendVify'>
+      <input placeholder="请输入8-16位新密码" bindinput="inputUser" placeholder-class='active-place-holder' auto-focus/>
+      <text class='password-desc'>8-16个字符,必须包含字母和数字,区分大小写</text>
+    </view>
+  </view>
+
+  <view class="login-button-panel">
+      <button bindtap="login" bindtap='activeAccount'>确认</button>
+    </view>
+
+</view>

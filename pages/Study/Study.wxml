@@ -1,0 +1,35 @@
+<view class='container'>
+  <view class='header-box'>
+    <view class='header-box1'>
+      <view class='num'>32</view>
+      <view class='text1'>学时</view>
+    </view>
+    <view class='header-box1'>
+      <view class='num'>3</view>
+      <view class='text2'>专题</view>
+    </view>
+    <view class='header-box1'>
+      <view class='num'>24</view>
+      <view class='text3'>考试</view>
+    </view>
+  </view>
+  <!--列表  -->
+  <view class='Study-list'>
+    <view class='tabcontent-container'>
+            <view class='content-item' wx:for="{{studys}}" hover-class="hover-class" wx:key>
+              <view class='item-time'>
+                <i class="iconfont icon-shijian"></i>{{item.duration}}</view>
+              <image mode='aspectFill' src='{{GlobalInfo.fileUrl}}{{item.imagephoto }}' />
+              <view class='item-title'>{{item.coursewarename}}</view>
+              <view class='zuozhe'>
+                <view class='subcolor font30 item-zjr'>
+                  <i class='iconfont icon-zhanghuffffffpx'></i>{{item.teachersname}}</view>
+                <view class='subcolor font30'>
+                  <i class='iconfont icon-chakan'></i>{{item.clickrate}}</view>
+                <view class='subcolor font30'>
+                  <i class='iconfont icon-xingxing'></i>{{item.grade }}</view>
+              </view>
+            </view>
+          </view>
+  </view>
+</view>

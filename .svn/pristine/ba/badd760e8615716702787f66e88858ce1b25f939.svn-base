@@ -1,0 +1,30 @@
+<view class='box-init les-Anthology'>
+  <view class='box-init title-box'>
+    <text class='title'>选集</text>
+  </view>
+
+
+  <view class="box-init les-Anthology-scroll_box">
+    <scroll-view class="box-init scroll-view_x" scroll-into-view="{{lang}}" scroll-x>
+
+      <view class="box-init les-Anthology-item {{item.coursewareid==lesid?'active':''}}" id="{{item.coursewareid}}"  data-item="{{item}}" wx:for="{{info.suitejson}}" wx:key="coursewareid" bindtap='suiteQuery'>
+        {{item.coursewareid}}
+      </view>
+
+    </scroll-view>
+  </view>
+
+</view>
+
+
+
+<view class="box-init ki1"> 
+    <scroll-view  scroll-x style="width: auto;overflow:hidden;" >
+
+      <view class="box-init ki2"  wx:for="{{info.suitejson}}">
+        <image src="../../image/bg1.png" class="item_book_img" mode="aspectFill"></image>
+        <view class="item_book_text">测试数据</view>
+      </view>
+     
+    </scroll-view>
+  </view>

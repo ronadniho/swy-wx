@@ -1,0 +1,17 @@
+<!--pages/lesdetail/teacherlist.wxml-->
+<view class='container'>
+  <view class='list-container'>
+    <view class='item' wx:for="{{list}}" bindtap='goDetail' data-itemid="{{item.id}}" hover-class='item-hover'>
+      <image mode='aspectFill' src="{{item.photo_servername?GlobalInfo.fileUrl+item.photo_servername:'http://cnmaker.org.cn/imgClip/sysImg/male02-130.png'}}"></image>
+      <span>{{item.name}}</span>
+    </view>
+    <view wx:if="{{showLoading}}" class='list-loading'>
+        <div class="item-loader-container">
+          <div class="la-ball-clip-rotate-multiple la-1x">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+    </view>
+  </view>
+</view>

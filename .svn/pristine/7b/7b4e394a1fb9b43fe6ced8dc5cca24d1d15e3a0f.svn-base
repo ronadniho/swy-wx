@@ -1,0 +1,190 @@
+<view class="container">
+    <!--交卷和查看-->
+    <view wx:if="{{searchStatus}}" class="result {{searchStatus?'result-show':''}}">
+        <!--操作-->
+        <!-- <view class="action flex">
+             <view>
+                 <icon class="flex iconfont icon-ego-guanbi" bindtap="close"></icon>
+             </view>
+             &lt;!&ndash;<view>
+             <view class="time">
+             <div class="border">
+             <span>11:12</span>
+             </div>
+             </view>
+             </view>&ndash;&gt;
+         </view>-->
+
+        <!--标题-->
+        <view class="title flex">
+            <text>{{examName}}</text>
+            <icon class="iconfont icon-ego-guanbi" bindtap="close"></icon>
+        </view>
+
+        <!--题目列表-->
+        <view>
+            <!--单选-->
+            <view class="test-list">
+                <view class="test-title">单选</view>
+                <view class="float clr">
+                    <view class="test-item lt {{item.sign?'sign':''}} {{item.selectid?'no':''}}" wx:for="{{examlist}}"
+                          wx:key="id" wx:if="{{item.examcategory==0}}"
+                          bindtap="toggle" data-page="{{index+1}}">
+                        <text>{{index+1}}</text>
+                    </view>
+                    <!--<view class="test-item lt no">-->
+                    <!--<text>9</text>-->
+                    <!--</view>-->
+                    <!--<view class="test-item lt sign">-->
+                    <!--<text>1</text>-->
+                    <!--</view>-->
+                </view>
+            </view>
+            <!--多选-->
+            <view class="test-list">
+                <view class="test-title">多选</view>
+                <view class="float clr">
+                    <view class="test-item lt {{item.sign?'sign':''}} {{item.selectid.length?'no':''}}" wx:for="{{examlist}}"
+                          wx:key="id" wx:if="{{item.examcategory==1}}"
+                          bindtap="toggle" data-page="{{index+1}}">
+                        <text>{{index+1}}</text>
+                    </view>
+                </view>
+            </view>
+            <!--判断题-->
+            <view class="test-list">
+                <view class="test-title">判断题</view>
+                <view class="float clr">
+                    <view class="test-item lt {{item.sign?'sign':''}} {{item.selectid?'no':''}}" wx:for="{{examlist}}"
+                          wx:key="id" wx:if="{{item.examcategory==2}}"
+                          bindtap="toggle" data-page="{{index+1}}">
+                        <text>{{index+1}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!--提交-->
+        <view class="submit">
+            <button bindtap="submit">交卷并查看结果</button>
+        </view>
+    </view>
+
+    <!--做题目-->
+    <view wx:if="{{!searchStatus}}" class="question">
+        <!--操作-->
+        <!-- <view class="action flex">
+             <view>
+                 <icon class="iconfont icon-ego-guanbi" bindtap="returnProgress"></icon>
+             </view>
+             <view>
+                 <icon class="iconfont icon-datiqia" bindtap="search"></icon>
+                 <icon class="iconfont icon-chakantiezigengduoshoucang"></icon>
+                 &lt;!&ndash;<view class="time">&ndash;&gt;
+                     &lt;!&ndash;<div class="border">&ndash;&gt;
+                         &lt;!&ndash;<span>11:12</span>&ndash;&gt;
+                     &lt;!&ndash;</div>&ndash;&gt;
+                 &lt;!&ndash;</view>&ndash;&gt;
+             </view>
+         </view>-->
+        <view class="action flex">
+            <view class="flex-box">
+                <text class="current">{{page}}</text>
+                <text>/</text>
+                <text>{{examTotal}}</text>
+            </view>
+            <view class="flex flex-box">
+                <view class="card-icon" bindtap="close">
+                    <view class="pad-icon">
+                        <image src="{{GlobalInfo.resourceUrl}}datika.png"></image>
+                        <text>答题卡</text>
+                    </view>
+                </view>
+                <view class="sign-icon" bindtap="sign">
+                    <view class="pad-icon" wx:for="{{examlist}}" wx:key="id" data-page="{{index+1}}"
+                          wx:if="{{index+1==page}}">
+                        <view wx:if="{{index+1==page}}">
+                            <view>
+                                <image src="{{GlobalInfo.resourceUrl}}biaoji.png"></image>
+                                <text>{{item.sign==false?'做标记':'已标记'}}</text>
+                            </view>
+                            <!--<block wx:if="{{item.status==false}}">
+                                <image src="{{GlobalInfo.resourceUrl}}biaoji.png"></image>
+                                <text>做标记</text>
+                            </block>
+                            <block wx:elif="{{item.status==true}}">
+                                <image src="{{GlobalInfo.resourceUrl}}biaoji.png"></image>
+                                <text>已标记</text>
+                            </block>-->
+                        </view>
+                    </view>
+                </view>
+
+            </view>
+        </view>
+        <!--标题-->
+        <view class="title">
+            <text>{{examName}}</text>
+        </view>
+
+        <!--题目-->
+        <view class="test {{animate}}" wx:for="{{examlist}}" wx:key="id" data-page="{{index+1}}">
+            <!--<view wx:if="{{index+1==20}}">-->
+            <view wx:if="{{index+1==page}}">
+                <view class="test-title">
+                    <text>{{item.examtitle}}</text>
+                </view>
+
+                <!--单选题-->
+                <view class="test-description" wx:if="{{item.examcategory==0}}">
+                    <radio-group class="radio-group" bindchange="radioChange">
+                        <label class="radio" wx:for="{{item.answerList}}" wx:key="id" wx:for-item="j">
+                            <view>
+                                <radio value="{{j.answerid}}" checked="{{j.isselect}}"/>
+                                <text>{{j.answer}}</text>
+                            </view>
+                        </label>
+                    </radio-group>
+                </view>
+
+                <!--多选题-->
+                <view class="test-description" wx:elif="{{item.examcategory==1}}">
+                    <checkbox-group class="checkbox-group" bindchange="checkboxChange">
+                        <label class="checkbox" wx:for="{{item.answerList}}" wx:key="id" wx:for-item="j">
+                            <view>
+                                <checkbox value="{{j.answerid}}" checked="{{j.isselect}}"/>
+                                <text>{{j.answer}}</text>
+                            </view>
+                        </label>
+                    </checkbox-group>
+                </view>
+
+                <!--判断题-->
+                <view class="test-description" wx:elif="{{item.examcategory==2}}">
+                    <radio-group class="radio-group" bindchange="radioChange">
+                        <label class="radio" wx:for="{{item.answerList}}" wx:key="id" wx:for-item="j">
+                            <view>
+                                <radio value="{{j.answerid}}" checked="{{j.isselect}}"/>
+                                <text>{{j.answer}}</text>
+                            </view>
+                        </label>
+                    </radio-group>
+                </view>
+            </view>
+
+
+        </view>
+        <!--控制-->
+        <view class="button-group flex">
+            <view>
+                <button bindtap="prev" class="{{page>1&&animate=='end'?'active':''}}">上一题</button>
+            </view>
+            <view wx:if="{{page<50}}">
+                <button bindtap="next" class="{{page<examTotal&&animate=='end'?'active':''}}" wx:if="{{page!=50}}">下一题</button>
+            </view>
+            <view wx:if="{{page==50}}">
+                <button bindtap="submit" class="active">交卷</button>
+            </view>
+        </view>
+    </view>
+</view>

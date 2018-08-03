@@ -1,0 +1,144 @@
+page {
+  height: 100%;
+}
+
+.love-listen-box {
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  padding: 0rpx;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding-bottom: 410rpx;
+}
+
+.love-listen-top {
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  width: 100%;
+  height: 100%;
+  background-color: #484545;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.love-list-top-conte {
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: url(http://www.karma-time.com/res/images/music.jpg) no-repeat;
+  background-size: 100% auto; 
+  filter: blur(40px);
+}
+
+.love-listen-top image {
+  width: 400rpx;
+  height: 600rpx;
+  z-index: 2;
+}
+
+.love-listen-progess {
+  width: 0%;
+  height: 5rpx;
+  position: absolute;
+  bottom: 0rpx;
+  background-color: #9c9b9b;
+}
+
+.love-listen-progess-curor {
+  width: 210rpx;
+  height: 48rpx;
+  position: absolute;
+  bottom: -24rpx;
+  left: 0%;
+  border-radius: 40rpx;
+}
+
+.love-listen-progess-curor-bg {
+  width: 100%;
+  height: 48rpx;
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  background-color: #535252;
+  border-radius: 40rpx;
+  opacity: 0.6;
+}
+
+.love-listen-progess-curor-conent {
+  width: 100%;
+  height: 48rpx;
+  line-height: 48rpx;
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  color: #fff;
+  font-size: 25rpx;
+  text-align: center;
+  border-radius: 40rpx;
+}
+
+.love-video-box {
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  width: 100%;
+  height: 250rpx;
+  line-height: 250rpx;
+  position: absolute;
+  bottom: 160rpx;
+  left: 0rpx;
+  text-align: center;
+}
+
+.love-video-box i {
+  font-size: 120rpx;
+  color: #fa7715;
+}
+
+.love-video-box i.hide {
+  display: none;
+}
+
+.love-bottom-box {
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  width: 100%;
+  height: 160rpx;
+  position: absolute;
+  bottom: 0rpx;
+  left: 0rpx;
+  text-align: center;
+  padding-top: 42rpx;
+  background-color: #f6f5f5;
+}
+
+.love-bottom-box .item {
+  display: inline-block;
+  margin-left: 30rpx;
+}
+
+.love-bottom-box .item:first-child {
+  margin-left: 0rpx;
+}
+
+.love-bottom-box .item i {
+  display: block;
+  font-size: 48rpx;
+  color: #535252;
+}
+
+.love-bottom-box .item text {
+  display: block;
+  font-size: 32rpx;
+  color: #aaa9a9;
+}

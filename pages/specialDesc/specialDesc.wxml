@@ -1,0 +1,328 @@
+<!--<import src="../../utils/wxParse/wxParse.wxml"/>-->
+
+<view class="container">
+    <view class="banner">
+        <image wx:if="{{banner}}" src="{{GlobalInfo.fileUrl}}{{banner}}"></image>
+        <image wx:if="{{!banner}}" src="../../image/special-banner.jpg"></image>
+        <!-- <view class="flex">
+             <icon class="iconfont icon-gouwucheman"/>
+             <span>待学<text>{{waitstudytime?waitstudytime:0}}</text>学时
+             </span>
+         </view>-->
+    </view>
+    <view class="tab">
+
+        <!--tab-->
+        <ul class="tab-list flex">
+            <li class="tab-item {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="swichNav">
+                <text data-current="0">学习要求</text>
+            </li>
+            <li class="tab-item {{currentTab==1 ? 'active' : ''}}" data-current="1" bindtap="swichNav">
+                <text data-current="1">必修课程</text>
+            </li>
+            <li class="tab-item {{currentTab==2 ? 'active' : ''}}" data-current="2" bindtap="swichNav">
+                <text data-current="2">选修课程</text>
+            </li>
+            <li class="tab-item {{currentTab==3 ? 'active' : ''}}" data-current="3" bindtap="swichNav">
+                <text data-current="3">小结</text>
+            </li>
+
+        </ul>
+
+
+        <hr/>
+        <ul class="tab-content">
+
+            <!--学习要求-->
+            <li class="tab-detail tab-item {{currentTab==0 ? 'show' : ''}}">
+                <view class="content content1">
+
+                    <view class="tab-padding">
+                        <view>
+                            <view>1、学时时长：需完成15学时，已完成<text>0</text>学时
+                            </view>
+                        </view>
+                        <view>
+                            <view>2、考试学时：需完成6学时，已完成<text>0</text>学时
+                            </view>
+                        </view>
+                        <view>
+                            <view>3、结业考试：通过可获取15学时，已获取<text>0</text>学时
+                            </view>
+                        </view>
+                        <view>
+                            <view>4、毕业小结：通过可获取15学时，已获取<text>0</text>学时
+                            </view>
+                        </view>
+                        <!--<view wx:if="{{classInfo.istargetrequirements==1}}">
+                            <view class="title">教学目标</view>
+                            <rich-text nodes="{{classInfo.targetrequirements}}"></rich-text>
+                        </view>
+                        <view wx:if="{{classInfo.isgraduationrequirement==1}}">
+                            <view class="title">结业要求</view>
+                            <rich-text nodes="{{classInfo.graduationrequirement}}"></rich-text>
+
+                        </view>
+                        <view wx:if="{{classInfo.isguidingideology==1}}">
+                            <view class="title">指导思想</view>
+                            <rich-text nodes="{{classInfo.guidingideology}}"></rich-text>
+
+                        </view>-->
+                    </view>
+
+                    <view class="content2 no"
+                          wx:if="{{!classInfo.istargetrequirements&&!classInfo.isgraduationrequirement&&!classInfo.isguidingideology}}">
+                        <view class="no-tip">
+                            <image src="{{GlobalInfo.resourceUrl}}empty.png"></image>
+                            <view>暂无学习要求</view>
+                        </view>
+                    </view>
+                </view>
+                <!-- <button class="signUp" bindtap="signUp" wx:if="{{!signUpStatus}}">
+                     <icon class="iconfont icon-bianji1"></icon>
+                     <text>报名</text>
+                 </button>-->
+            </li>
+            <!--必修课程-->
+            <li class="tab-detail tab-item {{currentTab==1 ? 'show' : ''}}">
+                <view class="content2">
+                    <ul class="content2-list">
+                        <li class="clr" wx:for="{{category0}}" data-coursewareid="{{item.coursewareid}}"
+                            wx:key="coursewareid" bindtap="toPlay">
+                            <view class="lt">
+                                <image src="{{GlobalInfo.fileUrl}}{{item.imagephoto}}"></image>
+                                <view class="history">
+
+                                    <!--<text class="iconfont icon-shijian">00:34:55</text>-->
+                                    <i class="iconfont icon-shijian"></i>
+                                    <em>
+                                        {{item.duration}}
+                                    </em>
+                                </view>
+
+                                <image src="{{GlobalInfo.resourceUrl}}shipin.png"
+                                       wx:if="{{item.teachervideo&&!item.audio_url}}"></image>
+
+                                <image src="{{GlobalInfo.resourceUrl}}yinping.png"
+                                       wx:if="{{item.audio_url&&!item.teachervideo}}"></image>
+
+                                <image src="{{GlobalInfo.resourceUrl}}yinpingshipin.png"
+                                       wx:if="{{item.teachervideo&&item.audio_url}}"></image>
+                                <b></b>
+                                <p wx:if="{{item.category==0}}">必</p>
+                                <p wx:else>选</p>
+                            </view>
+                            <view class="rt">
+                                <dl>
+                                    <dt>{{item.coursewarename}}</dt>
+                                    <dd>主讲人：{{item.teachersname}}</dd>
+                                    <dd class="flex">
+                                        <!--<progress percent="{{item.playpercentage}}"/>-->
+                                        <myProgress>
+                                            <div style="width:{{item.playpercentage}}%"
+                                                 class="{{item.playpercentage==100?'end':''}}"></div>
+                                        </myProgress>
+                                        <text class="{{item.playpercentage==100?'end':''}}">{{item.playpercentage}}%
+                                        </text>
+                                    </dd>
+                                    <dd class="flex">
+                                        <div>
+                                            <i class="iconfont icon-chakan"></i>
+                                            <text>{{item.clickrate}}</text>
+                                        </div>
+                                        <div>
+                                            <i class="iconfont icon-xingxing"></i>
+                                            <text>{{item.grade}}</text>
+                                        </div>
+                                        <div>
+                                            <i class="iconfont icon-iconxuexisel"></i>
+                                            <text>{{item.studytime}}</text>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </view>
+                        </li>
+
+                    </ul>
+                </view>
+
+
+                <view class="content2 no" wx:if="{{category0.length==0}}">
+                    <view class="no-tip">
+                        <image src="{{GlobalInfo.resourceUrl}}empty.png"></image>
+                        <view></view>
+                    </view>
+                </view>
+            </li>
+
+            <!--选修课-->
+            <li class="tab-detail tab-item {{currentTab==2 ? 'show' : ''}}">
+                <view class=" content2">
+                    <ul class="content2-list">
+                        <li class="clr" wx:for="{{category1}}" data-coursewareid="{{item.coursewareid}}"
+                            wx:key="coursewareid" bindtap="toPlay">
+                            <view class="lt">
+                                <image src="{{GlobalInfo.fileUrl}}{{item.imagephoto}}"></image>
+                                <view class="history">
+
+                                    <!--<text class="iconfont icon-shijian">00:34:55</text>-->
+                                    <i class="iconfont icon-shijian"></i>
+                                    <em>
+                                        {{item.duration}}
+                                    </em>
+                                </view>
+                                <image src="{{GlobalInfo.resourceUrl}}shipin.png" wx:if="{{item.teachervideo}}"></image>
+                                <div wx:if="{{item.teachervideo}}">
+                                    <image src="{{GlobalInfo.resourceUrl}}yinpingshipin.png"
+                                           wx:if="{{item.audio_url}}"></image>
+                                </div>
+                                <image src="{{GlobalInfo.resourceUrl}}yinping.png" wx:if="{{item.audio_url}}"></image>
+                            </view>
+                            <view class="rt">
+                                <dl>
+                                    <dt>{{item.coursewarename}}</dt>
+                                    <dd>主讲人：{{item.teachersname}}</dd>
+                                    <dd class="flex">
+                                        <!--<progress percent="{{item.playpercentage}}"/>-->
+                                        <myProgress>
+                                            <div style="width:{{item.playpercentage}}%"
+                                                 class="{{item.playpercentage==100?'end':''}}"></div>
+                                        </myProgress>
+                                        <text class="{{item.playpercentage==100?'end':''}}">{{item.playpercentage}}%
+                                        </text>
+                                    </dd>
+                                    <dd class="flex">
+                                        <div>
+                                            <i class="iconfont icon-chakan"></i>
+                                            <text>{{item.clickrate}}</text>
+                                        </div>
+                                        <div>
+                                            <i class="iconfont icon-xingxing"></i>
+                                            <text>{{item.grade}}</text>
+                                        </div>
+                                        <div>
+                                            <i class="iconfont icon-iconxuexisel"></i>
+                                            <text>{{item.studytime}}</text>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </view>
+                        </li>
+                    </ul>
+                </view>
+
+
+                <view class="content2 no" wx:if="{{category1.length==0}}">
+                    <view class="no-tip">
+                        <image src="{{GlobalInfo.resourceUrl}}empty.png"></image>
+                        <view>暂无课程</view>
+                    </view>
+                </view>
+            </li>
+
+
+            <!--小结-->
+            <li class="tab-detail tab-item {{currentTab==3 ? 'show' : ''}}">
+                <view class="bg-fff content content3">
+                    <view >
+                        <view class="title">标题</view>
+                        <view>
+                            <input
+                                    type="text"
+                                    placeholder="在此输入小结标题"/>
+                        </view>
+                    </view>
+                    <view>
+                        <view class="title">正文</view>
+                        <view>
+                            <textarea
+                                    placeholder="在此输入小结内容"/>
+                        </view>
+                    </view>
+
+                    <!-- <view class="title">
+                         <view>
+                             结业要求
+                         </view>
+                         <text class="block">必修课共{{progress.requirecount}}门，需修满{{progress.requiredpassmark}}门；</text>
+                         <text class="block">选修课共{{progress.electivecount}}门，需修满{{progress.electivepassmark}}门。</text>
+                     </view>
+
+                     <view class="progress" wx:if="{{signUpStatus}}">
+                         <view class=" flex">
+                             <text>必修课</text>
+                             <text class="tipX">已完成{{progress.cu_compulsorynumber}}门</text>
+                         </view>
+                         <view class="progress-box">
+                             <myProgress>
+                                 <div style="width:{{progress.cu_compulsorynumber/progress.requirecount*100}}%"
+                                      class="{{progress.cu_compulsorynumber/progress.requirecount*100==100?'end':''}}"></div>
+                             </myProgress>
+                         </view>
+
+
+                         <view class=" flex">
+                             <text>选修课</text>
+                             <text class="tipX">已完成{{progress.cu_electivenumber}}门</text>
+                         </view>
+                         <view class="progress-box">
+                             <myProgress>
+                                 <div style="width:{{progress.cu_electivenumber/progress.electivecount*100}}%"
+                                      class="{{progress.cu_electivenumber/progress.electivecount*100==100?'end':''}}"></div>
+                             </myProgress>
+                         </view>
+                     </view>
+
+
+                     <view class="score" wx:if="{{progress.isexam&&signUpStatus}}">
+                         <hr/>
+                         <view>
+                             <view class=" flex">
+                                 <view class="flex-box">
+                                     <dl class="flex">
+                                         <dt>考试</dt>
+                                         <dd>
+                                             <view>{{currentScore?currentScore:0}}</view>
+                                             <text>本次得分</text>
+                                         </dd>
+                                     </dl>
+                                 </view>
+                                 <view class="flex-box">
+                                     <dl class="flex">
+                                         <dt></dt>
+                                         <dd>
+                                             <view>{{testDetail.maxexamscore?testDetail.maxexamscore:0}}</view>
+                                             <text>最高得分</text>
+                                         </dd>
+                                     </dl>
+                                 </view>
+                             </view>
+                             <hr/>
+
+                         </view>
+                     </view>-->
+                </view>
+            </li>
+        </ul>
+
+    </view>
+    <view class="button-group">
+        <view wx:if="{{signUpStatus&&currentTab==0&&progress.isexam>0}}" class="endtest">
+            <button class="endTest" bindtap="endTest"
+                    disabled="{{!(progress.cu_compulsorynumber>=progress.requiredpassmark)||!(progress.cu_electivenumber>=progress.electivepassmark)}}">
+                <icon class="iconfont icon-bianji "></icon>
+                <text>{{progress.examcount?'再考一次':'结业考试'}}</text>
+            </button>
+        </view>
+        <view wx:if="{{currentTab==3}}" class="summary flex">
+            <a class="flex">保存</a>
+            <a class="flex">提交</a>
+        </view>
+        <!--<view wx:if="{{!signUpStatus&&currentTab!=1}}" class="sign">
+            <button class="signUp" bindtap="signUp">
+                <icon class="iconfont icon-bianji1"></icon>
+                <text>报名</text>
+            </button>
+        </view>-->
+    </view>
+</view>

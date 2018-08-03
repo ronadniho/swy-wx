@@ -1,0 +1,98 @@
+<view class="container">
+    <!--未完成考试-->
+    <view class="list not">
+        <view class="title" wx:if="{{notTest.length}}">未完成考试</view>
+        <!--item-->
+        <view class="flex item" wx:for="{{notTest}}" wx:key="id" >
+            <view class="item-l">
+                <view class="abstract">{{item.classname}}</view>
+                <view wx:if="{{item.progress<=90}}">
+                    <!--<view class="progress">已看完{{item.studyrate*100}}%</view>-->
+                    <view class="progress">已看完{{item.progress}}%</view>
+                    <view class="tips">学习时长未满足不能进行考试</view>
+                </view>
+            </view>
+            <view class="item-r">
+                <view class="flex">
+                    <button wx:if="{{item.progress<=90}}">考试</button>
+                    <button class="active" bindtap="testing" wx:if="{{item.progress>90}}" data-classId="{{item.classid}}" data-testStatus="{{testStatus}}">{{item.examcount>0?'重考':'考试'}}</button>
+                </view>
+            </view>
+        </view>
+
+
+       <!-- <view class="flex item">
+            <view class="item-l">
+                <view class="abstract">把全面从严治党的要求落实到位长的名 123123123</view>
+                <view class="progress">已看完63%</view>
+                <view class="tips">学习时长未满足不能进行考试</view>
+            </view>
+            <view class="item-r">
+                <view class="flex">
+                    <button>考试</button>
+                </view>
+            </view>
+        </view>
+        <view class="flex item">
+            <view class="item-l">
+                <view class="abstract">深化体制机制改革加快实施创产业创新123123123123</view>
+            </view>
+            <view class="item-r">
+                <view class="flex">
+                    <button class="active" bindtap="testing">考试</button>
+                </view>
+            </view>
+        </view>
+        <view class="flex item">
+            <view class="item-l">
+                <view class="abstract">智慧环保与基层环保监督能力建设</view>
+            </view>
+            <view class="item-r">
+                <view class="flex">
+                    <button class="active">考试</button>
+                </view>
+            </view>
+        </view>-->
+    </view>
+    <!--已完成考试-->
+    <view class="list already">
+        <view class="title" wx:if="{{alreadyTest.length}}">已完成考试</view>
+        <!--item-->
+
+        <view class="flex item" wx:for="{{alreadyTest}}" wx:key="id">
+            <view class="item-l">
+                <view class="abstract">{{item.classname}}</view>
+                <view class="progress">结业得分：{{item.maxexamscore?item.maxexamscore:0}}</view>
+            </view>
+            <view class="item-r">
+                <view class="flex">
+                    <button class="already-btn" bindtap="testing" data-classId="{{item.classid}}" data-testStatus="{{testStatus}}">重考</button>
+                </view>
+            </view>
+        </view>
+
+        <!--<view class="flex item">
+            <view class="item-l">
+                <view class="abstract">深化体制机制改革加快实施创产业创新 123123123</view>
+                <view class="progress">结业得分：98</view>
+            </view>
+            <view class="item-r">
+                <view class="flex">
+                    <button class="already-btn">重考</button>
+                </view>
+            </view>
+        </view>
+
+        <view class="flex item">
+            <view class="item-l">
+                <view class="abstract">智慧环保与基层环保监督能力建设 123123123</view>
+                <view class="progress">结业得分：98</view>
+            </view>
+            <view class="item-r">
+                <view class="flex">
+                    <button class="already-btn">重考</button>
+                </view>
+            </view>
+        </view>-->
+    </view>
+</view>

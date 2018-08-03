@@ -1,0 +1,83 @@
+<view class='active-box'>
+
+
+  <view style="display:none;">
+
+
+
+
+
+
+
+
+  </view>
+
+  <view class='active-box-item-label'>
+    <view class='desc-txt-panel two-space'>
+      <text>姓 名:</text>
+    </view>
+  </view>
+
+  <view class='active-box-item'>
+
+    <view class='active-box-item-content'>
+      <input placeholder="请输入您的姓名" value='{{username}}' bindinput="inputUser" placeholder-class='active-place-holder' auto-focus/>
+    </view>
+  </view>
+
+
+  <view class='active-box-item-label'>
+    <view class='desc-txt-panel'>
+      <text>安全码:</text>
+    </view>
+  </view>
+
+  <view class='active-box-item verfiy-box'>
+
+    <view class='active-box-item-content'>
+      <input placeholder="请输入右侧安全码" value='{{safecode}}' bindinput="inputSafetyCode" placeholder-class='active-place-holder' auto-focus/>
+    </view>
+    <view class='active-verfiy-box' bindtap='verfiyCode'>
+      <image src="{{__GlobalInfo.postUrl}}/api/VerifyCode/loginyzmcode/{{timestamp}}"></image>
+    </view>
+  </view>
+
+
+  <view class='active-box-item-label'>
+    <view class='desc-txt-panel'>
+      <text>手机号:</text>
+    </view>
+  </view>
+
+  <view class='active-box-item verfiy-box'>
+
+    <view class='active-box-item-content'>
+      <input placeholder="请输入手机号" value='{{mobile}}' bindinput="inputMobile" placeholder-class='active-place-holder' auto-focus/>
+    </view>
+    <view class="active-verfiy-box {{countstart==0?'send':'sending'}}" bindtap='sendVify'>
+      <text>{{countStr}}</text>
+    </view>
+  </view>
+
+
+  <view class='active-box-item-label'>
+    <view class='desc-txt-panel two-space'>
+      <text>验证码:</text>
+    </view>
+
+  </view>
+
+  <view class='active-box-item'>
+
+    <view class='active-box-item-content'>
+      <input placeholder="请输入6位手机验证码" value='{{vifycode}}' bindinput="inputVerificationCode" placeholder-class='active-place-holder' auto-focus/>
+    </view>
+  </view>
+
+
+</view>
+
+
+<view class="login-button-panel">
+  <button bindtap="login" bindtap='activeAccount'>激活</button>
+</view>

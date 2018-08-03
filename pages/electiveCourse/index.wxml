@@ -1,0 +1,133 @@
+<!--special.wxml-->
+<view class="container">
+  <view class='topserach-container'>
+    <view bindtap='onGoOtherPage' data-pagepath='zuijinxuexi/zuijinxuexi'  class='left-btn'>
+      <i class="iconfont icon-lishixiao"></i>
+      <view>历史</view>
+    </view>
+    <view class='input' bindtap='onGoSerachPage'>输入关键字快速查找内容<i class="iconfont icon-sousuo fr"></i></view>
+  </view>
+  <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(255,255,255,0.6)" indicator-active-color="#ffffff"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='tool-container'>
+    <view bindtap='onSwitchTabPage' data-pagepath='zizhuxuanxue/zizhuxuanxue' class='tool-item'>
+    <image src='{{GlobalInfo.resourceUrl}}xuanxue.png' />
+    <view>选学</view>
+    </view>
+    <view bindtap='onSwitchTabPage' data-pagepath='zhuanti/zhuanti' class='tool-item'>
+    <image src='{{GlobalInfo.resourceUrl}}zhuanti.png' />
+    <view>专题</view>
+    </view>
+    <view bindtap='onGoOtherPage' data-pagepath='aiting/aiting' class='tool-item'>
+    <image src='{{GlobalInfo.resourceUrl}}aiting.jpg' />
+    <view>爱听</view>
+    </view>
+    <view bindtap='onGoOtherPage' data-pagepath='meiwen/meiwen' class='tool-item'>
+    <image src='{{GlobalInfo.resourceUrl}}meiwen.jpg' />
+    <view>美文</view>
+    </view>
+  </view>
+  <view class='sjjbxzt-container'>
+    <view class='sjjbxzt-title'>
+    司局级必修专题
+    <view bindtap='onSwitchTabPage' data-pagepath='zhuanti/zhuanti' class='fr active-color font30'>更多<i class="iconfont icon-xiayige"></i></view>
+    </view>
+    <view class='item-container cl'>
+      <view class="iitem" wx:for="{{PlanInClassList}}">
+        <image mode='aspectFill' src='{{GlobalInfo.fileUrl}}{{item.icon}}' />
+        <view>必修:{{item.requiredstudytime}}学时<view class='fr'>选修:{{item.electivestudytime}}学时</view></view>
+        <view class='subcolor'>已报名人数:{{item.signnumber}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='tab-container'>
+    <scroll-view scroll-x>
+      <view class='tablist'>
+        <view class='tab-item {{selTabIndex==1?"active":""}}' data-tabindex="1" bindtap='onChangeTab'>最新课程</view>
+        <view class='tab-item {{selTabIndex==2?"active":""}}' data-tabindex="2" bindtap='onChangeTab'>推荐课程</view>
+        <view class='tab-item {{selTabIndex==4?"active":""}}' data-tabindex="4" bindtap='onChangeTab'>最热课程</view>
+      </view>
+    </scroll-view>
+    <view bindtap='onSwitchTabPage' data-pagepath='zizhuxuanxue/zizhuxuanxue' class='more-tab active-color font30'>更多<i class="iconfont icon-xiayige"></i></view>
+  </view>
+
+  <view class='tabcontent-container' wx:if="{{selTabIndex=='1'}}">
+    <view class='content-item' wx:for="{{coursewarelist_1}}" hover-class="hover-class">
+      <view class='item-time'><i class="iconfont icon-shijian"></i>{{item.duration}}</view>
+      <image mode='aspectFill' src='{{GlobalInfo.fileUrl}}{{item.imagephoto}}' />
+      <view class='item-title'>{{item.coursewarename}}</view>
+      <view class='subcolor font30 item-zjr'>主讲人：{{item.teachersname}}</view>
+      <view class='subcolor font30'>点击量:{{item.clickrate}}</view>
+    </view>
+  </view>
+  <view class='tabcontent-container' wx:if="{{selTabIndex=='2'}}">
+    <view class='content-item' wx:for="{{coursewarelist_2}}" hover-class="hover-class">
+      <view class='item-time'><i class="iconfont icon-shijian"></i>{{item.duration}}</view>
+      <image mode='aspectFill' src='{{GlobalInfo.fileUrl}}{{item.imagephoto}}' />
+      <view class='item-title'>{{item.coursewarename}}</view>
+      <view class='subcolor font30 item-zjr'>主讲人：{{item.teachersname}}</view>
+      <view class='subcolor font30'>点击量:{{item.clickrate}}</view>
+    </view>
+  </view>
+  <view class='tabcontent-container' wx:if="{{selTabIndex=='4'}}">
+    <view class='content-item' wx:for="{{coursewarelist_4}}" hover-class="hover-class">
+      <view class='item-time'><i class="iconfont icon-shijian"></i>{{item.duration}}</view>
+      <image mode='aspectFill' src='{{GlobalInfo.fileUrl}}{{item.imagephoto}}' />
+      <view class='item-title'>{{item.coursewarename}}</view>
+      <view class='subcolor font30 item-zjr'>主讲人：{{item.teachersname}}</view>
+      <view class='subcolor font30'>点击量:{{item.clickrate}}</view>
+    </view>
+  </view>
+
+  <view class='sjjbxzt-container'>
+    <view class='sjjbxzt-title'>
+    线下+线上班次
+    <view class='fr active-color font30'>更多<i class="iconfont icon-xiayige"></i></view>
+    </view>
+    <view class='item-container cl'>
+      <view class="iitem">
+        <image mode='aspectFill' src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' />
+        <view>课程数:5<view class='fr'>学时:12</view></view>
+        <view class='subcolor ellipsis'>班期:<span class="active-color">2017.11.27-2017.12.21</span></view>
+      </view>
+      <view class="iitem">
+        <image mode='aspectFill' src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' />
+        <view>课程数:5<view class='fr'>学时:12</view></view>
+        <view class='subcolor ellipsis'>班期:<span class="active-color">2017.11.27-2017.12.21</span></view>
+      </view>
+      <view class="iitem">
+        <image mode='aspectFill' src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' />
+        <view>课程数:5<view class='fr'>学时:12</view></view>
+        <view class='subcolor ellipsis'>班期:<span class="active-color">2017.11.27-2017.12.21</span></view>
+      </view>
+      <view class="iitem">
+        <image mode='aspectFill' src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' />
+        <view>课程数:5<view class='fr'>学时:12</view></view>
+        <view class='subcolor ellipsis'>班期:<span class="active-color">2017.11.27-2017.12.21</span></view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='sjjbxzt-container mb20'>
+    <view class='sjjbxzt-title'>
+    直播
+    <view bindtap='onGoOtherPage' data-pagepath='live/index'  class='fr active-color font30'>更多<i class="iconfont icon-xiayige"></i></view>
+    </view>
+    <view class='item-container cl'>
+      <view class="iitem-block">
+        <image mode='aspectFill' src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' />
+        <view class='ellipsis'>这里是标题表是框架是框架的少看电视倒萨倒萨反对反对方的方法的</view>
+        <view class='subcolor font30'>主讲人:时殷弘<view class='fr'>9月9日 14:00-17:20</view></view>
+      </view>
+    </view>
+  </view>
+
+</view>

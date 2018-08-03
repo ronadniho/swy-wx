@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "navigationBarTitleText": "专题",
+  "usingComponents": {},
+  "enablePullDownRefresh": true
+}

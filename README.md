@@ -1,2 +1,0 @@
-# swy-wx
-swy-wx

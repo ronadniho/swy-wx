@@ -1,0 +1,106 @@
+<!--pages/serach/special.wxml-->
+<view class="container">
+  <view class='topserach-container'>
+      <view class='input'>
+        <input focus placeholder="请输入关键词" value='{{serachTxt}}' bindinput="onSerachInput" placeholder-class="input-placeholder" bindconfirm="onSerachConfirm" confirm-type='搜索'></input>
+        <i class="iconfont icon-sousuo left-i"></i>
+        <i class="iconfont icon-guanbi right-i" bindtap="onClearInput" wx:if="{{isShowClose}}"></i>
+      </view>
+      <view class='right-btn' bindtap='onClosePage'>取消</view>
+  </view>
+  <view class='tip-container' wx:if="{{!isShowResult}}">
+    <view class='tip-title'><i class="iconfont icon-remen redcolor"></i>热门搜索</view>
+    <view class='tip-item cl'>
+      <view data-itemvalue="党员习" bindtap='onClickGoSerach'>党员习</view>
+      <view>党员学</view>
+      <view>党学习</view>
+      <view>党学习</view>
+      <view>党员学习</view>
+      <view>党员习</view>
+      <view>党员学习</view>
+    </view>
+    <view wx:if='{{serachHisArry.length>0}}' class='tip-title'><i class="iconfont icon-shijian redcolor"></i>最近搜索<view bindtap='onClearHis' class='fr redcolor font30'>清除</view> </view>
+    <view wx:if='{{serachHisArry.length>0}}' class='tip-item cl'>
+      <view wx:for="{{serachHisArry}}" data-itemvalue="{{item}}" bindtap='onClickGoSerach'>{{item}}</view>
+    </view>
+  </view>
+  <!--搜索结果-->
+  <view class='result-container'  wx:if="{{isShowResult}}">
+    <view class='group-view'>
+      <view class='result-title'>
+        课程
+        <view class='fr active-color font30'>更多<i class="iconfont icon-xiayige"></i></view>
+      </view>
+      <view class='tabcontent-container'>
+        <view class='content-item' hover-class="hover-class">
+          <view class='item-time hide'><i class="iconfont icon-shijian"></i>00:34:23</view>
+          <image mode='aspectFill' src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' />
+          <view class='item-title'>合理上世界领导会计放大可放大可姐夫的放大可分担分担</view>
+          <view class='subcolor font30 item-zjr'>主讲人：很长很长的名字开始开始点击速度开始开始点击速度</view>
+          <view class='subcolor font30'>点击量:800</view>
+        </view>
+        <view class='content-item' hover-class="hover-class">
+          <view class='item-time hide'><i class="iconfont icon-shijian"></i>00:34:23</view>
+          <image mode='aspectFill' src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' />
+          <view class='item-title'>合理上世界领导会计放大</view>
+          <view class='subcolor font30 item-zjr'>主讲人：很长很长</view>
+          <view class='subcolor font30'>点击量:800</view>
+        </view>
+      </view>
+    </view>
+    
+    <view  class='group-view mt20'>
+      <view class='result-title'>
+        爱听
+        <view class='fr active-color font30'>更多<i class="iconfont icon-xiayige"></i></view>
+      </view>
+      <view class='inner-content'>
+        <view class='box-contant-list' wx:for='{{aitinglist}}' wx:key>
+          <view class='img'>
+            <image src='{{item.imgs}}'></image>
+          </view>
+          <view class='jianjie'>
+            <view class='title'>{{item.title}}</view>
+            <view class='jieshao'>{{item.jieshao}}</view>
+            <view class='xinxi'>
+              <view class='time'>{{item.times}}</view>
+              <view class='bofang'>
+                <i class='iconfont icon-bofang'>{{bofang}}
+                  <text>播放</text>
+                </i>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='group-view mt20'>
+      <view class='result-title'>
+        美文
+        <view class='fr active-color font30'>更多<i class="iconfont icon-xiayige"></i></view>
+      </view>
+      <view class='inner-content'>
+        <view class='meiwen-contant-list' wx:for='{{meiwenlist}}' wx:key>
+            <view class='jianjie'>
+              <view class='title'>{{item.title}}</view>
+              <image class='mt20' mode='widthFix' src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' />
+              <view class='jieshao mt20'>{{item.jieshao}}</view>
+              <view class='xinxi'>
+                <view class='time'>
+                  <i class='iconfont icon-yonghu'>{{peop}}</i>
+                  {{item.num}}人读过</view>
+                <view class='artic'>
+                  <i class='iconfont icon-file'>{{artic}}</i>文稿
+                </view>
+                <view class='bofang'>
+                  <i class='iconfont icon-luyinyuyin'>{{red}}
+                  </i>
+                  <text>阅读</text>
+                </view>
+              </view>
+            </view>
+          </view>
+      </view>
+    </view>
+  </view>
+</view>

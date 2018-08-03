@@ -1,0 +1,519 @@
+@import "../../utils/wxParse/wxParse.wxss";
+
+.container {
+  padding: 0;
+}
+.container .banner {
+  width: 100%;
+  position: relative;
+}
+.container .banner image {
+  display: block;
+  width: 100%;
+}
+.container .banner view {
+  justify-content: center;
+  position: absolute;
+  top: 13rpx;
+  right: 11rpx;
+  line-height: 43rpx;
+  border-radius: 30rpx;
+  background-color: #fff;
+  padding:  0 18rpx;
+}
+.container .banner view icon {
+  display: flex;
+  font-size: 29rpx;
+  color: #f24141;
+  width: 29rpx;
+  height: 29rpx;
+}
+.container .banner view span {
+  color: #000;
+  font-size: 20rpx;
+  line-height: 43rpx;
+}
+.container .banner view span text {
+  line-height: 43rpx;
+  color: #f24141;
+  display: inline;
+}
+.container .tab {
+  width: 100%;
+}
+.container .tab .tab-list {
+  width: 100%;
+  line-height: 88rpx;
+  flex-flow: row nowrap;
+}
+.container .tab .tab-list .tab-item {
+  flex-grow: 1;
+  text-align: center;
+}
+.container .tab .tab-list .tab-item text {
+  display: inline-block;
+  line-height: 88rpx;
+  font-size: 25rpx;
+  color: #626262;
+}
+.container .tab .tab-list .tab-item.active text {
+  color: #39abff;
+  line-height: 84rpx;
+  border-bottom: 4rpx solid  #39abff;
+}
+.container .tab hr {
+  display: block;
+  width: 100%;
+  height: 8rpx;
+  background: linear-gradient(to bottom, #dedede, #f0f0f0);
+}
+.container .tab .tab-content .tab-detail {
+  position: relative;
+  display: none;
+    z-index:0;
+}
+.container .tab .tab-content .tab-detail .tab-padding {
+  padding:34rpx 24rpx 0;
+  box-sizing: border-box;
+}
+.container .sign{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.container .sign button.signUp {
+  background-color: #39abff;
+  color: #fff;
+  border-radius: 0;
+  line-height: 98rpx;
+}
+.container .sign button.signUp icon {
+  margin-right: 7rpx;
+}
+.container .sign button.signUp text {
+  font-size:27rpx;
+  color: #fff;
+}
+.container .sign button.signUp[disabled] {
+  background-color: #ddd;
+}
+.container .tab .tab-content .tab-detail .content .title {
+  display: inline-block;
+  width: 100%;
+  font-weight: 600;
+  font-size: 27rpx;
+  color: #626262;
+  line-height: 83rpx;
+}
+.container .tab .tab-content .tab-detail .content text,
+.container .tab .tab-content .tab-detail .content rich-text ,
+.container .tab .tab-content .tab-detail .content .tab-padding view{
+  font-size: 27rpx;
+  line-height: 67rpx;
+  color: #626262;
+}
+.container .tab .tab-content .tab-detail .content .tab-padding view text{
+  font-size: 32rpx;
+  color:#39abff;
+  font-weight: 600;
+}
+.container .tab .tab-content .tab-detail .content2 {
+  background-color: #fff;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list li {
+  padding: 24rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  width: 100%;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view {
+  display: inline-block;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:first-child {
+  width: 40%;
+  height: 172rpx;
+  position: relative;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:first-child image {
+  width: 100%;
+  height: 168rpx;
+  border-radius:7rpx;
+  display: block;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:first-child .history {
+  border-top-left-radius:7rpx;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 142rpx;
+  height: 30rpx;
+  line-height: 21rpx;
+  background: rgba(0, 0, 0, 0.3);
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:first-child .history i {
+  color: #fff;
+  font-size: 22rpx;
+  line-height: 26rpx;
+  margin-left: 12rpx;
+  margin-right: 11rpx;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:first-child .history em {
+  display: inline-block;
+  font-size: 16rpx;
+  color: #fff;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:first-child .history + image,
+.container .tab .tab-content .tab-detail .content2 .content2-list view:first-child .history + image + image,
+.container .tab .tab-content .tab-detail .content2 .content2-list view:first-child .history + div > image {
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -30rpx;
+  margin-top: -30rpx;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:first-child b {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border:26rpx solid #f34141;
+  border-left-color:transparent;
+  border-bottom-color:transparent;
+  border-top-right-radius:7rpx;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:first-child p {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 4px;
+  font-size: 22rpx;
+  color:#fff;
+}
+
+
+
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) {
+  width: 58%;
+  position: relative;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) image {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top:50%;
+  right: 0;
+  margin-top:-20rpx;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) dt {
+  font-size: 27rpx;
+  color: #626262;
+  display: block;
+  height: 75rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) dd {
+  display: block;
+  color: #a7a7a7;
+  font-size: 23rpx;
+  line-height: 32rpx;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) dd:nth-child(2) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) dd.flex {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+}
+
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) dd.flex myProgress {
+  display: block;
+  height: 16rpx;
+  flex-grow: 4;
+  border-radius:25px;
+  background-color:#ebebeb;
+  position: relative;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) dd.flex myProgress div{
+  display: block;
+  flex-grow: 4;
+  border-radius:25px;
+  background-color:#ff7200;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) dd.flex myProgress div.end{
+  background-color:#5bb85d;
+  width: 0;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) dd.flex myProgress + text {
+  padding-left: 2rpx;
+  font-size: 23rpx;
+  color:#ffa016;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) dd.flex myProgress + text.end {
+  color:#5bb85d;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) dd:last-child.flex div{
+  flex-grow:1;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) dd:last-child.flex div:nth-child(2){
+  text-align: center;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) dd:last-child.flex div:nth-child(3){
+  text-align: right;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) dd:last-child.flex div i{
+  vertical-align: middle;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list view:nth-child(2) dd:last-child.flex div text{
+  vertical-align: middle;
+}
+.container .tab .tab-content .tab-detail .content2 .content2-list.show {
+  display: block;
+}
+.container .tab .tab-content .tab-detail .content2.no {
+  height: 546rpx;
+}
+.container .tab .tab-content .tab-detail .content2.no .no-tip {
+  width: 404rpx;
+  font-size: 27rpx;
+  color: #626262;
+  margin: 0 auto;
+  padding-top: 112rpx;
+  text-align: center;
+}
+.container .tab .tab-content .tab-detail .content2.no .no-tip image {
+  width: 172rpx;
+  height: 150rpx;
+}
+.container .tab .tab-content .tab-detail .content2.no .no-tip view {
+  line-height: 49rpx;
+}
+.container .tab .tab-content .tab-detail .content3{
+    padding: 23rpx 23rpx 102rpx;
+    box-sizing: border-box;
+}
+.container .tab .tab-content .tab-detail .content3 .title{
+    font-size: 27rpx;
+    color:#626262;
+}
+.container .tab .tab-content .tab-detail .content3 view{
+    width: 100%;
+}
+.container .tab .tab-content .tab-detail .content3 textarea,
+.container .tab .tab-content .tab-detail .content3 input{
+    border:1px solid #ebebeb;
+    border-radius:5px;
+    width: 100%;
+    height: 84rpx;
+    line-height: 84rpx;
+    font-size: 37rpx;
+    padding: 0 20rpx;
+    color:#626262;
+    box-sizing: border-box;
+}
+.container .tab .tab-content .tab-detail .content3 textarea{
+    height: 374rpx;
+}
+/*.container .tab .tab-content .tab-detail .content3 .title {
+  padding-left: 24rpx;
+  box-sizing: border-box;
+}
+.container .tab .tab-content .tab-detail .content3 .title .block {
+  line-height: 56rpx;
+  font-weight: 500;
+}
+.container .tab .tab-content .tab-detail .content3 .flex {
+  flex-flow: row nowrap;
+  font-weight: 600;
+  font-size: 27rpx;
+  color: #626262;
+}
+.container .tab .tab-content .tab-detail .content3 .flex text {
+  flex-grow: 1;
+  text-align: left;
+  line-height: 83rpx;
+}
+.container .tab .tab-content .tab-detail .content3 .flex text:last-child {
+  text-align: right;
+  font-size: 28rpx;
+  color: #a7a7a7;
+  font-weight:300;
+}
+.container .tab .tab-content .tab-detail .content3 .flex text.tipX {
+  text-align: right;
+  font-size: 23rpx;
+  color: #a7a7a7;
+  font-weight:300;
+}
+.container .tab .tab-content .tab-detail .content3 .progress {
+  margin: 0 24rpx 46rpx;
+}
+.container .tab .tab-content .tab-detail .content3 .progress text {
+  line-height: 57rpx;
+}
+.container .tab .tab-content .tab-detail .content3 .progress myProgress {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 40rpx;
+  border-radius:25px;
+  background-color:#ebebeb;
+}
+.container .tab .tab-content .tab-detail .content3 .progress myProgress div{
+  display: block;
+  position: absolute;
+  z-index: 100;
+  height: 40rpx;
+  background-color:#ff7200;
+  border-radius:25px;
+  transition: width .6s;
+}
+.container .tab .tab-content .tab-detail .content3 .progress myProgress div.end{
+  background-color:#5cb85c;
+  border-radius:25px;
+  height: 40rpx;
+  transition: width .6s;
+}
+.container .tab .tab-content .tab-detail .content3 hr {
+  display: block;
+  width: 100%;
+  height: 8rpx;
+  background: linear-gradient(to bottom, #dedede, #f0f0f0);
+}
+.container .tab .tab-content .tab-detail .content3 .score{
+  padding-bottom:98rpx;
+}
+!*.container .tab .tab-content .tab-detail .content3 .score.x2{*!
+  !*padding-bottom:196rpx;*!
+!*}*!
+.container .tab .tab-content .tab-detail .content3 .score view.flex {
+  border-bottom: 1rpx solid #dedede;
+  flex-flow: row nowrap;
+  padding: 29rpx 24rpx;
+  box-sizing: border-box;
+}
+.container .tab .tab-content .tab-detail .content3 .score view.flex view.flex-box {
+  flex-grow: 1;
+}
+.container .tab .tab-content .tab-detail .content3 .score view.flex view.flex-box dl {
+  flex-flow: row nowrap;
+}
+.container .tab .tab-content .tab-detail .content3 .score view.flex view.flex-box dl dt {
+  flex-grow: 1;
+  line-height: 171rpx;
+  font-weight:700;
+}
+.container .tab .tab-content .tab-detail .content3 .score view.flex view.flex-box dl dd {
+  flex-grow: 3;
+  text-align: center;
+}
+.container .tab .tab-content .tab-detail .content3 .score view.flex view.flex-box dl dd view {
+  font-size: 47rpx;
+  line-height: 97rpx;
+  color: #626262;
+}
+.container .tab .tab-content .tab-detail .content3 .score view.flex view.flex-box dl dd text {
+  display: block;
+  width: 100%;
+  text-align: center;
+  line-height: 67rpx;
+  color: #616161;
+  font-weight: 500;
+}
+.container .tab .tab-content .tab-detail .content3 .score view.flex view.flex-box:first-child dd {
+  border-right: 1rpx solid #bfbfbf;
+}
+.container .tab .tab-content .tab-detail .content3 .score view.flex view.flex-box:first-child dd view,
+.container .tab .tab-content .tab-detail .content3 .score view.flex view.flex-box:first-child dd text {
+  color: #f34141;
+}
+.container .tab .tab-content .tab-detail .content3 .score hr {
+  display: block;
+  width: 100%;
+  background: linear-gradient(to bottom, #e3e3e3, #f2f2f2);
+}*/
+.container .button-group{
+  position: fixed;
+  bottom: 0;
+  left:0;
+  width: 100%;
+  height: 98rpx;
+}
+.container .button-group button.endTest {
+  width: 100%;
+  background-color: #f34141;
+  border-radius: 0;
+  line-height: 98rpx;
+  margin-top: 10rpx;
+}
+.container .button-group button.endTest text,
+.container .button-group button.endTest icon {
+  color: #fff;
+  vertical-align: middle;
+}
+.container .button-group button.endTest[disabled] {
+  background-color: #ddd;
+}
+
+.container .button-group .summary,.container .button-group .endtest{
+  width: 100%;
+  height: 98rpx;
+}
+.container .button-group .endtest button{
+    height:100%;
+    margin-top:0;
+}
+.container .button-group a.flex {
+    height:100%;
+    flex-grow: 1;
+    border-radius: 0;
+    border: 1px solid transparent;
+    border-top-color: #39abff;
+    color: #39abff;
+    background-color:#fff;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+.container .button-group a.flex:last-child {
+    background-color:#39abff;
+    color:#fff;
+}
+.container .tab .tab-content .tab-detail.show {
+  display: block;
+  animation:myRight .6s;
+}
+@keyframes myRight{
+  from{
+    opacity:0;
+    left:-20px;
+  }
+  to{
+    opacity:1;
+    left: 0;
+  }
+}
+.content1 {
+  padding-bottom: 98rpx;
+}
+/*
+.content1, .content2 {
+  padding-bottom: ~"98rpx";
+}
+*/

@@ -1,0 +1,94 @@
+
+.les-faculty-box {
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  padding: 0rpx;
+  width: 100%;
+  padding-top: 40rpx;
+}
+
+.les-faculty {
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 0rpx 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.les-faculty-header {
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  width: 230rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.les-faculty-header image {
+  width: 230rpx;
+  height: 300rpx;
+}
+
+.les-faculty-content {
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  width: 0;
+  height: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 20rpx;
+  padding-top: 20rpx;
+}
+
+.les-faculty-name {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #626262;
+  margin-bottom: 20rpx;
+}
+
+.les-faculty-position {
+  font-size: 31rpx;
+  color: #7c7c7c;
+  line-height: 50rpx;
+}
+
+.les-faculty-bref {
+  box-sizing: border-box;
+  border: none;
+  margin: 0rpx;
+  width: 100%;
+  text-indent: 90rpx;
+  text-align: left;
+  color: #7c7c7c;
+  font-size: 32rpx;
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical; */
+  margin-top: 20rpx;
+  padding: 0rpx 20rpx;
+}
+
+.empty-container{
+  padding: 100rpx 0rpx;
+  width: 100%;
+  text-align: center;
+  color: #c9c9c9
+}
+.empty-container view{
+  margin-top: 50rpx;
+}

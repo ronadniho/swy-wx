@@ -1,0 +1,48 @@
+<!--课程  -->
+<view class='tab-container'>
+  <scroll-view scroll-x>
+    <view class='tablist'>
+      <view class='tab-item' data-tabindex="1" bindtap='onChangeTab'>最新课程</view>
+    </view>
+  </scroll-view>
+</view>
+<!--最新  -->
+<scroll-view scroll-y class='box-contant' style="height: {{clientHeight}}" bindscrolltoupper='{{refesh}}' bindscrolltolower="loadMore">
+  <view class='tabcontent-container'>
+    <view class='content-item' wx:for="{{coursewarelist_1}}" data-item="{{item}}" hover-class="hover-class" wx:key data-index='{{index}}' id='{{item.coursewareid}}' bindtap='detailkcnew'>
+      <view class='item-time'>
+        <i class="iconfont icon-shijian times"></i>{{item.duration}}</view>
+      <image class='image rimage' mode='aspectFill' src='{{GlobalInfo.fileUrl}}{{item.imagephoto }}' />
+      <view class='item-title'>{{item.coursewarename}}</view>
+      <view class='item-jieshao'>主讲人：{{item.teachersname}}({{item.description}})</view>
+      <view class='schedulecomp flex'>
+        <myProgress>
+          <div style="width:{{item.playpercentage}};background-color:{{item.playpercentage=='100%'?'#5bb85d':'#ffa016'}}"></div>
+        </myProgress>
+        <text style="color:{{item.playpercentage=='100%'?'#5bb85d':'#ffa016'}}">{{item.playpercentage}}</text>
+      </view>
+      <view class='zuozhe'>
+        <view class='subcolor font30'>
+          <i class='iconfont icon-chakan icons'></i>{{item.clickrate}}</view>
+        <view class='subcolor font30'>
+          <i class='iconfont icon-xingxing'></i>{{item.grade }}</view>
+        <view class='subcolor font30 item-zjr'>
+          <i class='iconfont icon-iconxuexisel iconss'></i>{{item.studytime}}</view>
+      </view>
+      <view class='erji'>
+        <view class='erji-i'>
+          <!--音频  -->
+          <image mode='aspectFill' wx:if='{{!item.teachervideo&&item.audio_url}}' src='{{GlobalInfo.resourceUrl}}yinping.png'></image>
+          <!--视频  -->
+          <image mode='aspectFill' wx:if='{{item.teachervideo&&!item.audio_url}}' src='{{GlobalInfo.resourceUrl}}shipin.png'></image>
+          <!--视频音频  -->
+          <image mode='aspectFill' wx:if='{{item.teachervideo&&item.audio_url}}' src='{{GlobalInfo.resourceUrl}}yinpingshipin.png'></image>
+        </view>
+      </view>
+      <view wx:if="{{searchnull}}" class='empty-container' style='width:100%;'>
+        <image mode='widthFix' src='/image/empty.png' style='width:30%;'></image>
+        <view>您搜索的内容为空，请重新搜索！</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

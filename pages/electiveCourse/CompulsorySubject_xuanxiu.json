@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#F34141",
+  "navigationBarTextStyle": "#ffffff",
+  "navigationBarTitleText": "选修专题",
+  "backgroundColor": "#F34141",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": false
+}

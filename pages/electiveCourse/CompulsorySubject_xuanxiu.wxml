@@ -1,0 +1,27 @@
+<!--选修  -->
+<view class='sjjbxzt-container'>
+  <view class='sjjbxzt-title'>
+    选修专题
+  </view>
+  <scroll-view scroll-y class='box-contant' style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltolower="loadMore">
+    <view class='tabcontent-container'>
+      <view class='content-item ' wx:for="{{PlanInClassList}}" data-item="{{item}}" wx:key hover-class="hover-class" data-index='{{index}}' id='{{item.id}}' bindtap='detailxuanxiu'>
+        <view class='item-zhuanti'>专题班</view>
+        <image class='image rimage' mode='aspectFill' src='{{GlobalInfo.fileUrl}}{{item.image_servername }}' />
+        <view class=' items'>{{item.name}}</view>
+        <view class='schedulecomp flex'>
+          <myProgress>
+            <div style="width:{{item.progress}}%;background-color:{{item.progress==100?'#5bb85d':'#ffa016'}}"></div>
+          </myProgress>
+          <text style="color:{{item.progress==100?'#5bb85d':'#ffa016'}}">{{item.progress}}%</text>
+        </view>
+        <view class='sjzt'>
+          <view class='sjzt-bixiu sjzt-size'>
+            必修学时:{{item.requiredfinishedstudytime }}/{{item.requiredstudytime}}</view>
+          <view class='sjzt-bixiu sjzt-size'>
+            选修学时:{{item.electivefinishedstudytime }}/{{item.electivestudytime}}</view>
+        </view>
+      </view>
+    </view>
+    </scroll-view>
+</view>

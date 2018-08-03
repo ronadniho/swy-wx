@@ -1,0 +1,321 @@
+const util = require('../../utils/util.js')
+const les_tool = require('./tool.js')
+const polyv = require('../../utils/polyv.js');
+var __GlobalInfo = require('../../utils/config.js');
+
+
+function queryData(that) {
+  let loginUser = wx.getStorageSync('loginUser');
+
+  let args = {
+    "coursewareid": that.data.lesid,
+    "classid": "",
+    "enableplaylist": true
+  }
+
+  console.log(args);
+
+  util.getServerData(args, "api/getCoursewareVideoplay", function (result) {
+
+    console.log(result);
+
+    let playlist = result.playlist;
+    let anchor = "";
+    let stepIndex = 0;
+    if (playlist && playlist.length > 0) {
+      for (let i = 0; i < playlist.length; i++) {
+        playlist[i]["showindex"] = (i + 1).toString();
+        playlist[i]["playIndex"] = i;
+        playlist[i].id = playlist[i].id.trim();
+        if (i < 2) {
+          playlist[i]["anchor"] = "";
+        }
+        else {
+          playlist[i]["anchor"] = "S_" + playlist[i - 1].id;
+        }
+        if (playlist[i].id == result.currentcourseware.id) {
+          stepIndex = i;
+          anchor = playlist[stepIndex].anchor;
+        }
+      }
+    }
+
+    let cwr = result.currentcourseware;
+
+    let vidSrc = "";
+    var callbackSetData = function () {
+
+      let isshow = 0;
+      let lesorsee = -1;
+      if (util.isBlank(cwr.audio_url) && !util.isBlank(vidSrc)) {
+        lesorsee = 1;
+      }
+
+      if (!util.isBlank(cwr.audio_url) && util.isBlank(vidSrc)) {
+        lesorsee = 0;
+      }
+
+      if (!util.isBlank(cwr.audio_url) && !util.isBlank(vidSrc)) {
+        lesorsee = 1;
+        isshow = 1;
+      }
+
+      //总时长
+      if (cwr.realduration) {
+        let redls = cwr.realduration.split(":");
+        if (redls[0] == "00") {
+          cwr.realduration = redls[1] + ":" + redls[2];
+        }
+      }
+
+      var timestamp = Date.parse(new Date());
+
+      that.setData({
+        lastplaytime: cwr.lastplaytime != '' ? cwr.lastplaytime : 0,
+        lastSaveTime: cwr.lastplaytime != '' ? cwr.lastplaytime : 0,
+        ["info.comment"]: cwr.comment.replace(/\&nbsp;/g, ""),
+        ["info.title"]: cwr.name,
+        ["info.studytime"]: cwr.studytime,
+        ["info.clickrate"]: cwr.clickrate,
+        ["info.gradecount"]: cwr.gradecount,
+        ["info.grade"]: cwr.grade,
+        ["info.ifcollectedcourse"]: cwr.ifcollectedcourse,
+        ["info.ifwaitcourse"]: cwr.ifwaitcourse,
+        ["info.suitejson"]: playlist,
+        ["info.realduration"]: cwr.realduration,
+        anchor: anchor,
+        stepIndex: ++stepIndex,
+        "audoCover": cwr.imagephoto + "?t=" + timestamp,
+        "audoSrc": that.data.GlobalInfo.fileUrl + cwr.audio_url,
+        "videoSrc": vidSrc,
+        lesorsee: lesorsee,
+        isshow: isshow
+      })
+
+
+      //获取教师详情
+      that.teacherDetail();
+
+      that.queryISEvaluate();
+
+      that.animationDo();
+
+    }
+
+    if (cwr.teachervideo != "") {
+      /*获取视频数据*/
+      polyv.getVideo(cwr.teachervideo, function (videoInfo) {
+        vidSrc = videoInfo.src[0];
+        callbackSetData();
+      });
+    }
+    else {
+      callbackSetData();
+    }
+
+
+  }, "POST");
+}
+
+function queryPartUpdate(that) {
+  let loginUser = wx.getStorageSync('loginUser');
+
+  let args = {
+    "studentid": loginUser.studentId,
+    "id": that.data.lesid
+  }
+  util.getServerData({
+    "key": ["selectFrontCoursewareById"],
+    "postData": args
+  }, "api/CommonSQL", function (result) {
+
+    that.setData({
+      ["info.ifcollectedcourse"]: result[0].ifcollectedcourse,
+      ["info.ifwaitcourse"]: result[0].ifwaitcourse
+    })
+    that.queryISEvaluate();
+
+
+  }, "POST");
+}
+
+function teacherDetail(that) {
+
+  let loginUser = wx.getStorageSync('loginUser');
+
+  util.getServerData({
+    key: ["selectTeachersByCoursewareId"],
+    postData: {
+      "studentid": loginUser.studentId,
+      id: that.data.lesid
+    }
+  }, "api/CommonSQL", function (result) {
+
+    result.forEach((item) => {
+      item.comment = item.comment.replace(/\&nbsp;/g, "");
+    });
+    that.setData({ teacherinfo: result });
+
+    console.log(that.data);
+  });
+}
+
+function queryISEvaluate(that) {
+  util.getServerData({
+    "key": ["geAppraisetFlag"],
+    "postData": { "id": that.data.lesid }
+  }, "api/CommonSQL", function (result) {
+    that.setData({
+      ["info.isappraise"]: result[0].isappraise
+    })
+  }, "POST");
+}
+
+function queryDetail(that) {
+
+  let detai_args = {
+    "coursewareid": that.data.lesid,
+    "classid": "",
+    "enableplaylist": true
+  }
+
+  console.log("queryDetail参数:");
+  console.log(detai_args);
+
+  util.getServerData(detai_args, "api/getSigleCoursewareInfo", function (result) {
+
+    console.log("queryDetail结果:");
+    console.log(result);
+
+    that.setData({
+      lesid: result.currentcourseware.id,
+      lastplaytime: result.currentcourseware.lastplaytime != "" ? result.currentcourseware.lastplaytime : 0,
+      lastSaveTime: result.currentcourseware.lastplaytime != "" ? result.currentcourseware.lastplaytime : 0,
+      ["info.comment"]: result.currentcourseware.comment,
+      ["info.title"]: result.currentcourseware.name,
+      ["info.studytime"]: result.currentcourseware.studytime,
+      ["info.clickrate"]: result.currentcourseware.clickrate,
+      ["info.gradecount"]: result.currentcourseware.gradecount,
+      ["info.grade"]: result.currentcourseware.grade,
+      ["info.ifcollectedcourse"]: result.currentcourseware.ifcollectedcourse,
+      firstVideoPlay: 0,
+      firstPlay: 0
+    })
+
+    wx.setNavigationBarTitle({
+      title: result.currentcourseware.name
+    })
+
+    that.audoInit();
+
+  }, "POST");
+
+  that.queryISEvaluate();
+}
+
+function suiteQuery(e, that) {
+
+  that.setData({
+    timerLan: 0,
+    timeCicle: 20000,
+    GlobalInfo: __GlobalInfo,
+    lesorsee: 0,//音频与视频切换开关
+    isshow: 0,
+    videoStart: -1,//音视频播放位置
+    videoSrc: "",
+    audoSrc: '',
+    audoCover: "",
+    percent: 0,//音频播放百分比进度
+    lastplaytime: 0,
+    curTimeString: "00:00",//音频播放时间
+    durationString: "00:00",//音频时长
+    audioAction: {
+      method: 'pause'
+    },//音频播放动作
+    firstPlay: 0,
+    firstVideoPlay: 0,
+    currentTab: 0,//tab控制
+    info: {
+      comment: "",
+      title: "",
+      studytime: "0",
+      clickrate: "0",
+      gradecount: "0",
+      grade: "0",
+      ifcollectedcourse: "0",
+      ifwaitcourse: "0",
+      teacherLession: [],
+      isappraise: "0",
+      suitejson: []
+    },
+    evs: [
+      {
+        "itemid": 1,
+        "itemname": "观点正确",
+        "rate": 0,
+        "max": 5,
+        "isReadonly": false,
+        "overStar": null,
+        "percent": 0
+      },
+      {
+        "itemid": 2,
+        "itemname": "表达流畅",
+        "rate": 0,
+        "max": 5,
+        "isReadonly": false,
+        "overStar": null,
+        "percent": 0
+      },
+      {
+        "itemid": 3,
+        "itemname": "内容丰富",
+        "rate": 0, "max": 5,
+        "isReadonly": false,
+        "overStar": null,
+        "percent": 0
+      },
+      {
+        "itemid": 4,
+        "itemname": "讲授认真",
+        "rate": 0,
+        "max": 5,
+        "isReadonly": false,
+        "overStar": null,
+        "percent": 0
+      },
+      {
+        "itemid": 5,
+        "itemname": "形式生动",
+        "rate": 0,
+        "max": 5,
+        "isReadonly": false,
+        "overStar": null,
+        "percent": 0
+      }
+    ],
+    eva_panel: 0,
+    px: 0,
+    fixed_panel: 0,
+    animationData: {},
+    processBarShow: 0,
+    teacherinfo: [],
+    tid: "",
+    lesid: "",
+    lastSaveTime: 0
+  });
+
+  let id = e.target.dataset.item.coursewareid;
+  that.setData({ lesid: id });
+  that.queryData();
+}
+
+
+module.exports = {
+  queryData: queryData,
+  queryPartUpdate: queryPartUpdate,
+  teacherDetail: teacherDetail,
+  queryISEvaluate: queryISEvaluate,
+  suiteQuery: suiteQuery,
+  queryDetail: queryDetail
+}

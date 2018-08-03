@@ -1,0 +1,4 @@
+<!--pages/login/welcome.wxml-->
+<view class="container">
+<image bindtap='goLogin' style='width:100%;height:100%;margin-top:-100rpx;' mode='widthFix' src='https://file.e-celap.com/FileDownload/mApp/welcome.jpg'></image>
+</view>

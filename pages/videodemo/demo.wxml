@@ -1,0 +1,7 @@
+<view class="container">
+  <video id="polyvVideo" class="vp-v" src="{{video.src}}"></video>
+
+  <view style='margin-top:100rpx;' bindtap='onBindAutoPlay'>{{Audiostatus}}</view>
+  <view>总时长：{{AudioAlltime}}</view>
+  <view>播放进度：{{currentTime}}</view>
+</view>

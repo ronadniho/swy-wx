@@ -1,0 +1,89 @@
+<!--special.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="header-search">
+      <input type="text" placeholder="输入关键字快速查找课程" placeholder-class='placeholder' class='input' />
+      <view class='search-img'>
+        <i class='iconfont icon-sousuo'></i>
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <!--导航  -->
+    <view class='box-nav'>
+      <view class="box-nav-list">
+        <view class="zuixin {{currentTab==1? 'active':''}}">
+          <text data-current="1" bindtap='tabNav'>未报名</text>
+        </view>
+      </view>
+      <view class="box-nav-list">
+        <view class="zuixin {{currentTab==0? 'active':''}}">
+          <text data-current="0" bindtap='tabNav'>已报名</text>
+        </view>
+      </view>
+      <view class="box-nav-list">
+        <view class="zuixin {{currentTab==2? 'active':''}}">
+          <text data-current="2" bindtap='tabNav'>已完成</text>
+        </view>
+      </view>
+    </view>
+    <!--内容  -->
+    <swiper current='{{currentTab}}' duration="300" bindchange='bindChange' style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+      <!--已报名  -->
+      <swiper-item>
+        <scroll-view scroll-y='true' class='box-contant' style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+          <view class='box-contant-list' wx:for='{{datas2}}' wx:key>
+            <view class='img'>
+              <image src='{{item.image_servername}}'></image>
+
+            </view>
+            <view class='jianjie'>
+              <view class='title'>{{item.name}}</view>
+              <view class='jieshao'>开班时间：{{item.starttime}}</view>
+              <view class='jieshao'>必修：{{item.requirecount}}
+                <span>选修：{{item.electivecount}}</span>
+              </view>
+              <view class='jieshao'>已报名人数：{{item.signnumber}}</view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <!--未报名 -->
+      <swiper-item>
+        <scroll-view scroll-y='true' class='box-contant' style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+          <view class='box-contant-list' id='{{item.id}}' wx:for='{{datas1}}' wx:key bindtap='details' data-index='{{index}}'>
+            <view class='img'>
+              <image src='{{item.image_servername}}'></image>
+            </view>
+            <view class='jianjie'>
+              <view class='title'>{{item.name}}</view>
+              <view class='jieshao'>开班时间：{{item.starttime}}</view>
+              <view class='jieshao'>必修：{{item.requirecount}}
+                <span>选修：{{item.electivecount}}</span>
+              </view>
+              <view class='jieshao'>已报名人数：{{item.signnumber}}</view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <!--已完成 -->
+      <swiper-item>
+        <scroll-view scroll-y='true' class='box-contant' style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+          <view class='box-contant-list' wx:for='{{datas3}}' wx:key>
+             <view class='img'>
+              <image src='{{item.image_servername}}'></image>
+            </view>
+            <view class='jianjie'>
+              <view class='title'>{{item.name}}</view>
+              <view class='jieshao'>开班时间：{{item.starttime}}</view>
+              <view class='jieshao'>必修：{{item.requirecount}}
+                <span>选修：{{item.electivecount}}</span>
+              </view>
+              <view class='jieshao'>已报名人数：{{item.signnumber}}</view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>

@@ -1,0 +1,189 @@
+<view class="les-box {{info.suitejson.length>1?'chicoce':''}}">
+
+  <view class="les-video-box {{(lesorsee==0 || lesorsee==-1) ? '' : 'see'}}">
+
+    <view class='listen'>
+
+      <image src="{{GlobalInfo.fileUrl}}{{audoCover}}" mode='aspectFill' bindtap='animationClick'></image>
+
+
+      <view animation="{{animationData}}" class='listen-panel'>
+        <view class='listen-panel-bg'>
+        </view>
+        <view class='listen-panel-content'>
+          <view class="listen-panel-play {{audioAction.method == 'pause' ? '' : 'play'}}">
+            <i class="iconfont icon-bofang1 " bindtap="playAudio"></i>
+            <i class="iconfont icon-zanting pause-play" bindtap="pauseAudio"></i>
+          </view>
+
+          <view class='listen-panel-start-end'>
+            <text>{{curTimeString}}</text>
+          </view>
+
+          <view class='listen-panel-process'>
+            <slider bindchange="timeSliderChanged" value="{{percent}}" selected-color="#c6c3c3" block-size="15" />
+          </view>
+
+          <view class='listen-panel-start-end'>
+            <text>{{info.realduration}}</text>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+    <audio style="display:none;" src="{{audoSrc}}" action="{{audioAction}}" bindtimeupdate="audioTimeUpdated" bindended="audioEnd" controls></audio>
+
+    <video id="lessVideo" show-progress="false" src="{{videoSrc}}" bindtimeupdate="videoTimeUpdate" bindfullscreenchange="onVideoChange" bindended="videoEnd" controls>
+    </video>
+
+  </view>
+
+  <view class='les-title-box'>
+    <view class='les-title-box-content-left'>
+      <view class='les-title-box-content-left-desc'>
+
+        <view class='les-title-box-content-left-desc-content'>
+          <text>{{info.title}}</text>
+        </view>
+
+      </view>
+      <view class='les-title-box-content-left-compre'>
+        <i class="iconfont icon-chakan"></i>
+        <text>{{info.clickrate}}</text>
+
+        <i class="iconfont icon-xingxing little-big"></i>
+        <text>{{info.grade}}</text>
+
+        <i class="iconfont icon-iconxuexisel"></i>
+        <text>{{info.studytime}}</text>
+
+      </view>
+    </view>
+    <view class='les-title-box-content-right'>
+      <view style="display:none;" class="les-title-x-panel {{isshow==0 ? 'hide' : ''}}" bindtap='switchVideo'>
+        <view class='les-title-x-circle'>
+          <i class="iconfont {{lesorsee==1 ? 'icon-erji1' : 'icon-sanjiaoxing'}}"></i>
+        </view>
+        <view class='les-title-x-text '>
+          <text>{{lesorsee==1?'听课':'看课'}}</text>
+        </view>
+
+      </view>
+    </view>
+  </view>
+
+  <view class='box-init les-Anthology' wx:if="{{info.suitejson.length>1}}">
+    <view class='box-init title-box'>
+      <text class='title'>选集</text>
+    </view>
+    <view class="box-init les-Anthology-scroll_box">
+      <scroll-view class="box-init scroll-view_x" scroll-x>
+
+        <view class="box-init les-Anthology-item {{item.coursewareid==lesid?'active':''}}"  data-item="{{item}}" wx:for="{{info.suitejson}}" wx:key="coursewareid" bindtap='suiteQuery'>
+          {{item.shortname}}
+        </view>
+
+      </scroll-view>
+    </view>
+
+  </view>
+
+
+  <scroll-view class='les-scroll' scroll-y>
+
+    <view class='les-detail'>
+
+      <view class='lession-brief-box-title'>
+        课程简介
+      </view>
+
+      <view class="lession-brief-box">
+
+        <view class='lession-brief-box-content'>
+
+          <view class="comm-font-css">
+            {{info.comment}}
+          </view>
+
+        </view>
+
+      </view>
+
+    </view>
+
+    <view class='les-faculty-panel'>
+      <view class='lession-brief-box-title'>
+        师资
+      </view>
+      <view class='les-faculty-box' wx:for="{{teacherinfo}}" wx:key="id">
+
+        <view class='les-faculty'>
+          <view class='les-faculty-header'>
+            <image src="{{GlobalInfo.fileUrl}}{{item.photo_servername==''?'/mapp/teacher_img.png':item.photo_servername}}" mode='aspectFill'></image>
+          </view>
+
+          <view class='les-faculty-content'>
+            <view class='les-faculty-name'>{{item.name}}</view>
+            <view class='les-faculty-position'>
+              {{item.description}}
+            </view>
+          </view>
+        </view>
+        <view class='les-faculty-bref'>
+          <view class="comm-font-css">{{item.comment}}</view>
+        </view>
+      </view>
+    </view>
+
+  </scroll-view>
+
+
+
+  <view class='les-button-panel'>
+
+
+
+    <view class="les-button-panel-item" bindtap='openEvlu'>
+      <text>{{info.isappraise=='-1' ? '' :  info.isappraise=='0' ? '评价':'已评价'}}</text>
+    </view>
+
+
+    <view class="les-button-panel-item evaluate" bindtap='testClick'>
+      <text>考试</text>
+    </view>
+
+  </view>
+
+</view>
+
+
+<view class="les-shade-box {{eva_panel==0 ? '' : 'show'}}">
+</view>
+
+<view class="les-evaluate-box {{eva_panel==0 ? '' : 'show'}}">
+  <view class='les-evaluate-content'>
+    <view class='les-evaluate-content-inner'>
+
+      <view class='les-evaluate-line-box' wx:for="{{evs}}" wx:key="itemid">
+        <text>{{item.itemname}}</text>
+        <i data-item="{{item}}" bindtap='evaluateClick' data-star="1" class="iconfont icon-pingjiaxingxing {{item.rate>=1 ? 'ative' : ''}}"></i>
+        <i data-item="{{item}}" bindtap='evaluateClick' data-star="2" class="iconfont icon-pingjiaxingxing {{item.rate>=2 ? 'ative' : ''}}"></i>
+        <i data-item="{{item}}" bindtap='evaluateClick' data-star="3" class="iconfont icon-pingjiaxingxing {{item.rate>=3 ? 'ative' : ''}}"></i>
+        <i data-item="{{item}}" bindtap='evaluateClick' data-star="4" class="iconfont icon-pingjiaxingxing {{item.rate>=4 ? 'ative' : ''}}"></i>
+        <i data-item="{{item}}" bindtap='evaluateClick' data-star="5" class="iconfont icon-pingjiaxingxing {{item.rate>=5 ? 'ative' : ''}}"></i>
+        <text>{{item.percent}}分</text>
+      </view>
+
+      <view class='les-evaluate-submit-box' bindtap='evaluateSubmit'>
+        <text>提交</text>
+      </view>
+
+    </view>
+
+    <view class='les-evaluate-close-panel'>
+      <i class="iconfont icon-ego-guanbi" bindtap='closeEvlu'></i>
+    </view>
+
+  </view>
+</view>

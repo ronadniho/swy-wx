@@ -1,0 +1,29 @@
+/* pages/lesdetail/teacherlist.wxss */
+page{
+  background-color: #f2f2f2;
+}
+.list-container{
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0rpx 5rpx 5rpx rgba(0, 0, 0, 0.05);
+}
+.item{
+  height: 140rpx;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 100rpx;
+  padding:20rpx 20rpx 20rpx 140rpx;
+  position: relative;
+  border-bottom: 1rpx solid #eee;
+}
+.item image{
+  position: absolute;
+  left: 20rpx;
+  top: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.item-hover{
+  background-color: #f2f2f2;
+}

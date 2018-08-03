@@ -1,0 +1,53 @@
+<view class='container' style="display:none;">
+  <view class='box-contant-list cl' wx:for='{{list}}' wx:key bindtap='detailsj' data-index='{{index}}' data-itemid='{{item.id}}'>
+    <view class='img'>
+      <image mode='scaleToFill' class='brimage' src='{{GlobalInfo.fileUrl}}{{item.image_servername}}'></image>
+    </view>
+    <view class='jianjie'>
+      <view class='title'>{{item.name}}</view>
+      <view class='schedulecomp'>必修完成{{item.compulsorynumber}}门，选修完成{{item.electivenumber}}门</view>
+      <view class='jieshao mt10'>必修：{{item.requirecount}}
+        <span>选修：{{item.electivecount}}</span>
+      </view>
+      <view class='jieshao'>已报名人数：{{item.signnumber}}<span class="fr" wx:if='{{item.graduatestatus==1}}' style="color:green;">已结业</span></view>
+    </view>
+  </view>
+  <view wx:if="{{showLoading}}" class='list-loading'>
+        <div class="item-loader-container">
+          <div class="la-ball-clip-rotate-multiple la-1x">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+    </view>
+</view>
+
+<view class='container'>
+  <!--列表——专题 -->
+  <view class='tabcontent-container'>
+    <view class='tabcontent-container'>
+      <view class='content-item' wx:for="{{list}}" hover-class="hover-class" wx:key data-index='{{index}}' data-itemid='{{item.id}}'  bindtap='detailsj'>
+        <view class='item-zhuanti'>专题班</view>
+        <view class="item-zhuanti-right {{item.graduatestatus==1?'show':'' }}">已结业</view>
+        <image class='image rimage' mode='aspectFill' src='{{GlobalInfo.fileUrl}}{{item.image_servername }}' />
+        <view class=' items'>{{item.name}}</view>
+        <view class='schedulecomp flex'>
+          <myProgress>
+            <div style="width:{{item.schedulecomp}}%;background-color:{{item.schedulecomp==100?'#5bb85d':'#ffa016'}}"></div>
+          </myProgress>
+          <text style="color:{{item.schedulecomp==100?'#5bb85d':'#ffa016'}}">{{item.schedulecomp}}%</text>
+        </view>
+        <view class='sjzt'>
+          <view class='sjzt-bixiu sjzt-size'>
+            必修学时:{{item.requiredfinishedstudytime}}/{{item.requiredstudytime}}</view>
+          <view class='sjzt-bixiu sjzt-size'>
+            选修学时:{{item.electivefinishedstudytime}}/{{item.electivestudytime}}</view>
+        </view>
+        <view data-index="{{index}}" bindtap="delItem" class="inner del">
+          <i class="iconfont icon-lajitong"></i>
+          <view>删除</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

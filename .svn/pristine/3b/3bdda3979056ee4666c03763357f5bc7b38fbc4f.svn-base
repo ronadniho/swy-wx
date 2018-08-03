@@ -1,0 +1,66 @@
+<view class='les-list'>
+  <view class='les-list-item' data-item="{{item}}" wx:for="{{studylists2}}" wx:if="{{item.deleted==0}}" wx:key data-index='{{index}}' id='{{item.coursewareid}}' bindtap='detailkc'>
+    <view class='les-list-item-header'>
+      <view class="time-shade show">
+        <view></view>
+      </view>
+      <view class="time-panel show">
+        <i class="iconfont icon-shijian"></i>{{item.duration}}
+      </view>
+      <view class='image-box'>
+       <!-- <image class='image-ling' mode='aspectFill' wx:if='{{item.vidc==1}}' src='{{GlobalInfo.resourceUrl}}shipin.png'></image> -->
+        <image class='image-ling' mode='aspectFill'  src='/image/shipin_blue.png'></image>
+        <!-- <image class='image-ling' mode='aspectFill' wx:if='{{item.vidc==3}}' src='{{GlobalInfo.resourceUrl}}yinpingshipin.png'></image> -->
+        <image src="{{GlobalInfo.fileUrl}}{{item.imagephoto }}" mode='aspectFill'></image>
+      </view>
+    </view>
+
+    <view class='les-list-item-content'>
+      <view class="les-list-item-content-title">
+        <view class="les-list-item-content-title-content}}">
+          {{item.name}}
+        </view>
+      </view>
+      <view class='les-list-item-content-tearcher-info'>
+        主讲人:{{item.teachersname}}
+      </view>
+      <view class='les-list-item-content-status-box'>
+        <view class='les-list-item-content-process-box' style="display:none;">
+          <view class='les-list-item-content-process' >
+            <view class="les-list-item-content-process-line {{item.playpercentage=='100%'?'complete':''}}" style="width:{{item.playpercentage}}"></view>
+          </view>
+          <view class="les-list-item-content-process-text {{item.playpercentage=='0%'?'':item.playpercentage=='100%'?'complete':'color3'}}">
+            {{item.playpercentage}}
+          </view>
+        </view>
+        <view class='les-list-item-content-icons'>
+          <view class='les-list-item-content-icons-item'>
+            <i class="iconfont icon-chakan"></i>
+            <text>{{item.clickrate}}</text>
+          </view>
+          <view class='les-list-item-content-icons-item'>
+            <i class="iconfont icon-xingxing bigstar"></i>
+            <text>{{item.grade}}</text>
+          </view>
+          <view class='les-list-item-content-icons-item'>
+            <i class="iconfont icon-iconxuexisel"></i>
+            <text>{{item.studytime}}</text>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+
+    <view class="les-item-del-panel show" data-item="{{item}}" catchtap='cancelStudy'>
+      <i class="iconfont icon-lajitong"></i>
+      <text>删除</text>
+    </view>
+
+  </view>
+</view>
+
+<view wx:if="{{studylists1.length==0&&studylists2.length==0}}" class='empty-container' style='width:100%;'>
+  <image mode='widthFix' src='/image/empty.png' style='width:30%;'></image>
+  <view>您还没有待学习的，快去加入吧</view>
+</view>
